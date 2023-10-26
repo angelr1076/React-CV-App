@@ -1,4 +1,4 @@
-import './App.css';
+import './assets/styles/style.css';
 import { GeneralInfoForm } from './components/GeneralInfoForm';
 
 function App() {
