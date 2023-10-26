@@ -22,7 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-todos.txt
 
 # Env files
 .env
@@ -32,3 +31,6 @@ vite.config.js.timestamp-*.mjs
 
 # Local Netlify folder
 .netlify
+
+#Misc
+todos.md
