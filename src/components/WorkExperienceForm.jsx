@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function WorkExperienceForm({ addWorkExperience }) {
   const [formData, setFormData] = useState({
@@ -81,5 +82,9 @@ function WorkExperienceForm({ addWorkExperience }) {
     </div>
   );
 }
+
+WorkExperienceForm.propTypes = {
+  addWorkExperience: PropTypes.func.isRequired,
+};
 
 export { WorkExperienceForm };

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function GeneralInfoForm({ addGeneralInfo }) {
   const [formData, setFormData] = useState({
@@ -81,5 +82,9 @@ function GeneralInfoForm({ addGeneralInfo }) {
     </div>
   );
 }
+
+GeneralInfoForm.propTypes = {
+  addGeneralInfo: PropTypes.func.isRequired,
+};
 
 export { GeneralInfoForm };

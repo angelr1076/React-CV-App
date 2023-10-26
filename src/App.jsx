@@ -1,11 +1,11 @@
 import './assets/styles/style.css';
-import { GeneralInfoForm } from './components/GeneralInfoForm';
+import { CVBuilder } from './components/CVBuilder';
 
 function App() {
   return (
     <>
       <div className='main'>
-        <GeneralInfoForm />
+        <CVBuilder />
       </div>
     </>
   );

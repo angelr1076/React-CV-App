@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function EducationForm({ addEducation }) {
   const [formData, setFormData] = useState({
@@ -82,4 +83,8 @@ function EducationForm({ addEducation }) {
   );
 }
 
-export default EducationForm;
+EducationForm.propTypes = {
+  addEducation: PropTypes.func.isRequired,
+};
+
+export { EducationForm };
