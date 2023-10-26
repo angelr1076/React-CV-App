@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function GeneralInfoForm() {
+function GeneralInfoForm({ addGeneralInfo }) {
   const [formData, setFormData] = useState({
     fname: '',
     lname: '',
@@ -16,7 +16,14 @@ function GeneralInfoForm() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    // Display fields on CVDisplay element
+    addGeneralInfo(formData);
+    setFormData({
+      fname: '',
+      lname: '',
+      phone: '',
+      location: '',
+      email: '',
+    });
   };
 
   return (
