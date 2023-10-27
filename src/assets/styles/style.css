@@ -79,14 +79,13 @@ button:focus-visible {
   flex-direction: column;
 }
 
-/* Resume display */
+/*
 .display {
   display: flex;
   flex-direction: column;
   gap: 1em;
   width: 700px;
   background-color: #fff;
-  padding: 2em;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   margin: 0 auto;
@@ -98,9 +97,15 @@ button:focus-visible {
   margin-bottom: 1em;
 }
 
+.general-info {
+  background-color: #09416d;
+  color: #fff;
+}
+
 .general-info__flex {
   display: flex;
   flex-direction: column;
+  padding: 1em;
   gap: 0.5em;
 }
 
@@ -111,7 +116,11 @@ button:focus-visible {
 
 .contact-row {
   font-size: 0.9em;
-  color: #555;
+}
+
+.education {
+  display: flex;
+  flex-direction: column;
 }
 
 .education-item,
@@ -134,7 +143,7 @@ button:focus-visible {
 .work-item p {
   margin: 0.2em 0;
   font-size: 0.9em;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {

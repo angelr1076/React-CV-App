@@ -7,17 +7,21 @@ function CVDisplay() {
   return (
     <div className='display'>
       <section className='general-info'>
-        <div className='general-info__flex'>
-          <div className='row name-row'>
-            <h2>
-              {cvData.generalInfo.fname} {cvData.generalInfo.lname}
-            </h2>
+        {Object.keys(cvData.generalInfo).length > 0 && (
+          <div className='general-info__flex active'>
+            <div className='row name-row'>
+              <h2>
+                {cvData.generalInfo.fname} {cvData.generalInfo.lname}
+              </h2>
+            </div>
+            <div className='row contact-row'>
+              {cvData.generalInfo.phone && `${cvData.generalInfo.phone} |`}{' '}
+              {cvData.generalInfo.location &&
+                `${cvData.generalInfo.location} |`}{' '}
+              {cvData.generalInfo.email}
+            </div>
           </div>
-          <div className='row contact-row'>
-            {cvData.generalInfo.phone} | {cvData.generalInfo.location} |{' '}
-            {cvData.generalInfo.email}
-          </div>
-        </div>
+        )}
       </section>
       <section className='education'>
         {cvData.education.length > 0 && (
@@ -25,7 +29,7 @@ function CVDisplay() {
             <h2>Education</h2>
             {cvData.education.map((edu, index) => (
               <div key={index} className='education-item'>
-                <h3>{edu.institution}</h3>
+                <h4>{edu.institution}</h4>
                 <p>
                   {edu.degree} {edu.major}
                 </p>
@@ -43,7 +47,7 @@ function CVDisplay() {
             <h2>Experience</h2>
             {cvData.workExperience.map((job, index) => (
               <div key={index} className='work-item'>
-                <h3>{job.company}</h3>
+                <h4>{job.company}</h4>
                 <p>
                   {job.role} | {job.location}
                 </p>
