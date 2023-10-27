@@ -79,20 +79,61 @@ button:focus-visible {
   flex-direction: column;
 }
 
+/* Resume display */
 .display {
   display: flex;
   flex-direction: column;
   gap: 1em;
   width: 700px;
   background-color: #fff;
+  padding: 2em;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin: 0 auto;
 }
 
 .general-info,
 .education,
 .work-experience {
+  margin-bottom: 1em;
+}
+
+.general-info__flex {
   display: flex;
-  gap: 1em;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.name-row h2 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.contact-row {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.education-item,
+.work-item {
+  margin-bottom: 1em;
+}
+
+.education h2,
+.work-experience h2 {
+  margin-bottom: 0.5em;
+}
+
+.education-item h3,
+.work-item h3 {
+  margin: 0 0 0.5em;
+  font-size: 1.2em;
+}
+
+.education-item p,
+.work-item p {
+  margin: 0.2em 0;
+  font-size: 0.9em;
 }
 
 @media (prefers-color-scheme: light) {

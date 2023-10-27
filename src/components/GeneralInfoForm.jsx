@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button } from './Button';
 import PropTypes from 'prop-types';
 
 function GeneralInfoForm({ addGeneralInfo }) {
@@ -25,12 +26,11 @@ function GeneralInfoForm({ addGeneralInfo }) {
       location: '',
       email: '',
     });
-    console.log(formData);
   };
 
   return (
     <div>
-      <h2>General Info</h2>
+      <h3>Personal Details</h3>
       <form className='info-form' onSubmit={handleSubmit}>
         {/* form inputs */}
         <label htmlFor='fname'>First Name</label>
@@ -41,6 +41,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
           value={formData.fname}
           onChange={handleChange}
           placeholder='First Name'
+          required
         />
         <label htmlFor='lname'>Last Name</label>
         <input
@@ -50,6 +51,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
           value={formData.lname}
           onChange={handleChange}
           placeholder='Last Name'
+          required
         />
         <label htmlFor='phone'>Phone</label>
         <input
@@ -78,7 +80,12 @@ function GeneralInfoForm({ addGeneralInfo }) {
           onChange={handleChange}
           placeholder='Email'
         />
-        <button type='submit'>Add Info</button>
+        <Button
+          type='submit'
+          value='Submit'
+          text='Add Details'
+          disabled={!(formData.fname && formData.lname)}
+        />
       </form>
     </div>
   );

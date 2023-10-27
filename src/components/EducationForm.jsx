@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button } from './Button';
 import PropTypes from 'prop-types';
 
 function EducationForm({ addEducation }) {
@@ -25,7 +26,6 @@ function EducationForm({ addEducation }) {
       endDate: '',
       major: '',
     });
-    console.log(formData);
   };
 
   return (
@@ -78,7 +78,14 @@ function EducationForm({ addEducation }) {
           onChange={handleChange}
           placeholder='major'
         />
-        <button type='submit'>Add Education</button>
+        <Button
+          type='submit'
+          value='Submit'
+          text='Add Education'
+          disabled={
+            !(formData.institution && formData.degree && formData.major)
+          }
+        />
       </form>
     </div>
   );

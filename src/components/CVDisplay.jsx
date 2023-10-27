@@ -5,44 +5,58 @@ function CVDisplay() {
   const { cvData } = useContext(CVContext);
 
   return (
-    <>
-      <div className='display'>
-        <section className='general-info'>
-          <h2>
-            {cvData.generalInfo.fname} {cvData.generalInfo.lname}
-          </h2>
-          {cvData.generalInfo.phone} {cvData.generalInfo.location}{' '}
-          {cvData.generalInfo.email}
-        </section>
-        <section className='education'>
-          {cvData.education.map((edu, index) => (
-            <div key={index}>
-              <h2>{edu.institution}</h2>
-              <p>
-                {edu.degree} {edu.major}
-              </p>
-              <p>
-                {edu.startDate} - {edu.endDate}
-              </p>
-            </div>
-          ))}
-        </section>
-        <section className='work-experience'>
-          {cvData.workExperience.map((job, index) => (
-            <div key={index}>
-              <h2>{job.company}</h2>
-              <p>
-                {job.role} {job.location}
-              </p>
-              <p>
-                {job.startDate} - {job.endDate}
-              </p>
-              <p>{job.responsibilities}</p>
-            </div>
-          ))}
-        </section>
-      </div>
-    </>
+    <div className='display'>
+      <section className='general-info'>
+        <div className='general-info__flex'>
+          <div className='row name-row'>
+            <h2>
+              {cvData.generalInfo.fname} {cvData.generalInfo.lname}
+            </h2>
+          </div>
+          <div className='row contact-row'>
+            {cvData.generalInfo.phone} | {cvData.generalInfo.location} |{' '}
+            {cvData.generalInfo.email}
+          </div>
+        </div>
+      </section>
+      <section className='education'>
+        {cvData.education.length > 0 && (
+          <>
+            <h2>Education</h2>
+            {cvData.education.map((edu, index) => (
+              <div key={index} className='education-item'>
+                <h3>{edu.institution}</h3>
+                <p>
+                  {edu.degree} {edu.major}
+                </p>
+                <p>
+                  {edu.startDate} - {edu.endDate}
+                </p>
+              </div>
+            ))}
+          </>
+        )}
+      </section>
+      <section className='work-experience'>
+        {cvData.workExperience.length > 0 && (
+          <>
+            <h2>Experience</h2>
+            {cvData.workExperience.map((job, index) => (
+              <div key={index} className='work-item'>
+                <h3>{job.company}</h3>
+                <p>
+                  {job.role} | {job.location}
+                </p>
+                <p>
+                  {job.startDate} - {job.endDate}
+                </p>
+                <p>{job.responsibilities}</p>
+              </div>
+            ))}
+          </>
+        )}
+      </section>
+    </div>
   );
 }
 

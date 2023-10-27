@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button } from './Button';
 import PropTypes from 'prop-types';
 
 function WorkExperienceForm({ addWorkExperience }) {
@@ -7,7 +8,7 @@ function WorkExperienceForm({ addWorkExperience }) {
     role: '',
     startDate: '',
     endDate: '',
-    description: '',
+    responsibilities: '',
   });
 
   const handleChange = event => {
@@ -23,9 +24,8 @@ function WorkExperienceForm({ addWorkExperience }) {
       role: '',
       startDate: '',
       endDate: '',
-      description: '',
+      responsibilities: '',
     });
-    console.log(formData);
   };
 
   return (
@@ -69,16 +69,23 @@ function WorkExperienceForm({ addWorkExperience }) {
           onChange={handleChange}
           placeholder='End Date'
         />
-        <label htmlFor='description'>Description</label>
+        <label htmlFor='responsibilities'>responsibilities</label>
         <input
           type='text'
-          id='description'
-          name='description'
-          value={formData.description}
+          id='responsibilities'
+          name='responsibilities'
+          value={formData.responsibilities}
           onChange={handleChange}
-          placeholder='Description'
+          placeholder='responsibilities'
         />
-        <button type='submit'>Add Work Experience</button>
+        <Button
+          type='submit'
+          value='Submit'
+          text='Add Work'
+          disabled={
+            !(formData.company && formData.role && formData.responsibilities)
+          }
+        />
       </form>
     </div>
   );
