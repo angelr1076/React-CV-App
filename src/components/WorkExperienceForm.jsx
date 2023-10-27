@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { FormLabel, Input } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 function WorkExperienceForm({ addWorkExperience }) {
@@ -28,31 +30,47 @@ function WorkExperienceForm({ addWorkExperience }) {
     });
   };
 
+  const companyError = formData.company === '';
+  const roleError = formData.role === '';
+  const responsibilitiesError = formData.responsibilities === '';
+
   return (
     <div>
-      <h3>Work Experience</h3>
+      <Heading as='h3' size='md' noOfLines={1}>
+        Work Experience
+      </Heading>
       <form className='info-form' onSubmit={handleSubmit}>
-        {/* form inputs */}
-        <label htmlFor='company'>Company</label>
-        <input
+        {/* form Inputs */}
+        {!companyError ? (
+          <FormLabel htmlFor='company'>Company</FormLabel>
+        ) : (
+          <FormLabel htmlFor='company'>Company (Required)</FormLabel> // Todo Required in red (later)
+        )}
+        <Input
           type='text'
           id='company'
           name='company'
           value={formData.company}
           onChange={handleChange}
           placeholder='Company'
+          isInvalid={companyError}
         />
-        <label htmlFor='role'>Role</label>
-        <input
+        {!roleError ? (
+          <FormLabel htmlFor='role'>Role</FormLabel>
+        ) : (
+          <FormLabel htmlFor='role'>Role (Required)</FormLabel> // Todo Required in red (later)
+        )}
+        <Input
           type='text'
           id='role'
           name='role'
           value={formData.role}
           onChange={handleChange}
           placeholder='Role'
+          isInvalid={roleError}
         />
         <label htmlFor='startDate'>Start Date</label>
-        <input
+        <Input
           type='date'
           id='startDate'
           name='startDate'
@@ -61,7 +79,7 @@ function WorkExperienceForm({ addWorkExperience }) {
           placeholder='Start Date'
         />
         <label htmlFor='endDate'>End Date</label>
-        <input
+        <Input
           type='date'
           id='endDate'
           name='endDate'
@@ -69,14 +87,22 @@ function WorkExperienceForm({ addWorkExperience }) {
           onChange={handleChange}
           placeholder='End Date'
         />
+        {!responsibilitiesError ? (
+          <FormLabel htmlFor='responsibilities'>responsibilities</FormLabel>
+        ) : (
+          <FormLabel htmlFor='responsibilities'>
+            responsibilities (Required)
+          </FormLabel> // Todo Required in red (later)
+        )}
         <label htmlFor='responsibilities'>responsibilities</label>
-        <input
+        <Input
           type='text'
           id='responsibilities'
           name='responsibilities'
           value={formData.responsibilities}
           onChange={handleChange}
           placeholder='responsibilities'
+          isInvalid={responsibilitiesError}
         />
         <Button
           type='submit'

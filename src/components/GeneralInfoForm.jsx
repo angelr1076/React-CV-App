@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { FormLabel, Input } from '@chakra-ui/react';
-import { Button } from '@chakra-ui/react';
-import { Heading } from '@chakra-ui/react';
+import { Box, Heading, Text, Button } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 function GeneralInfoForm({ addGeneralInfo }) {
@@ -34,7 +33,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
   const lnameError = formData.lname === '';
 
   return (
-    <div>
+    <Box p={5} borderRadius='5'>
       <Heading as='h3' size='md' noOfLines={1}>
         Personal Details
       </Heading>
@@ -106,7 +105,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
           Add Details
         </Button>
       </form>
-    </div>
+    </Box>
   );
 }
 
