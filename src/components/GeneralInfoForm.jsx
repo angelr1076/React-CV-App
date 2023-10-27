@@ -25,6 +25,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
       location: '',
       email: '',
     });
+    console.log(formData);
   };
 
   return (
@@ -77,7 +78,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
           onChange={handleChange}
           placeholder='Email'
         />
-        <input type='submit' value='Submit' />
+        <button type='submit'>Add Info</button>
       </form>
     </div>
   );

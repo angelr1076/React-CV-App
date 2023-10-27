@@ -25,6 +25,7 @@ function EducationForm({ addEducation }) {
       endDate: '',
       description: '',
     });
+    console.log(formData);
   };
 
   return (
@@ -52,7 +53,7 @@ function EducationForm({ addEducation }) {
         />
         <label htmlFor='startDate'>Start Date</label>
         <input
-          type='text'
+          type='date'
           id='startDate'
           name='startDate'
           value={formData.startDate}
@@ -61,7 +62,7 @@ function EducationForm({ addEducation }) {
         />
         <label htmlFor='endDate'>End Date</label>
         <input
-          type='text'
+          type='date'
           id='endDate'
           name='endDate'
           value={formData.endDate}

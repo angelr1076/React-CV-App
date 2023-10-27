@@ -25,6 +25,7 @@ function WorkExperienceForm({ addWorkExperience }) {
       endDate: '',
       description: '',
     });
+    console.log(formData);
   };
 
   return (
@@ -52,7 +53,7 @@ function WorkExperienceForm({ addWorkExperience }) {
         />
         <label htmlFor='startDate'>Start Date</label>
         <input
-          type='text'
+          type='date'
           id='startDate'
           name='startDate'
           value={formData.startDate}
@@ -61,7 +62,7 @@ function WorkExperienceForm({ addWorkExperience }) {
         />
         <label htmlFor='endDate'>End Date</label>
         <input
-          type='text'
+          type='date'
           id='endDate'
           name='endDate'
           value={formData.endDate}
@@ -77,7 +78,7 @@ function WorkExperienceForm({ addWorkExperience }) {
           onChange={handleChange}
           placeholder='Description'
         />
-        <input type='submit' value='Submit' />
+        <button type='submit'>Add Work Experience</button>
       </form>
     </div>
   );
