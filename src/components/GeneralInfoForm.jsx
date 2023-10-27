@@ -1,13 +1,7 @@
 import { useState } from 'react';
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  // FormErrorMessage,
-  // FormHelperText,
-} from '@chakra-ui/react';
+import { FormLabel, Input } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
-
+import { Heading } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 function GeneralInfoForm({ addGeneralInfo }) {
@@ -41,8 +35,10 @@ function GeneralInfoForm({ addGeneralInfo }) {
 
   return (
     <div>
-      <h3>Personal Details</h3>
-      <FormControl className='info-form' onSubmit={handleSubmit}>
+      <Heading as='h3' size='md' noOfLines={1}>
+        Personal Details
+      </Heading>
+      <form className='info-form' onSubmit={handleSubmit}>
         {/* form Inputs */}
         {!fnameError ? (
           <FormLabel htmlFor='fname'>First Name</FormLabel>
@@ -109,7 +105,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
           variant='outline'>
           Add Details
         </Button>
-      </FormControl>
+      </form>
     </div>
   );
 }

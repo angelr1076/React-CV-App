@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { FormLabel, Input } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 function EducationForm({ addEducation }) {
@@ -28,31 +30,47 @@ function EducationForm({ addEducation }) {
     });
   };
 
+  const institutionError = formData.institution === '';
+  const degreeError = formData.degree === '';
+  const majorError = formData.major === '';
+
   return (
     <div>
-      <h3>Education</h3>
+      <Heading as='h3' size='md' noOfLines={1}>
+        Education
+      </Heading>
       <form className='info-form' onSubmit={handleSubmit}>
-        {/* form inputs */}
-        <label htmlFor='institution'>Institution</label>
-        <input
+        {/* form Inputs */}
+        {!institutionError ? (
+          <FormLabel htmlFor='institution'>Institution</FormLabel>
+        ) : (
+          <FormLabel htmlFor='institution'>Institution (Required)</FormLabel> // Todo Required in red (later)
+        )}
+        <Input
           type='text'
           id='institution'
           name='institution'
           value={formData.institution}
           onChange={handleChange}
           placeholder='Institution'
+          isInvalid={institutionError}
         />
-        <label htmlFor='degree'>Degree</label>
-        <input
+        {!degreeError ? (
+          <FormLabel htmlFor='degree'>Degree</FormLabel>
+        ) : (
+          <FormLabel htmlFor='degree'>Degree (Required)</FormLabel> // Todo Required in red (later)
+        )}
+        <Input
           type='text'
           id='degree'
           name='degree'
           value={formData.degree}
           onChange={handleChange}
           placeholder='Degree'
+          isInvalid={degreeError}
         />
-        <label htmlFor='startDate'>Start Date</label>
-        <input
+        <FormLabel htmlFor='startDate'>Start Date</FormLabel>
+        <Input
           type='date'
           id='startDate'
           name='startDate'
@@ -60,8 +78,8 @@ function EducationForm({ addEducation }) {
           onChange={handleChange}
           placeholder='Start Date'
         />
-        <label htmlFor='endDate'>End Date</label>
-        <input
+        <FormLabel htmlFor='endDate'>End Date</FormLabel>
+        <Input
           type='date'
           id='endDate'
           name='endDate'
@@ -69,14 +87,19 @@ function EducationForm({ addEducation }) {
           onChange={handleChange}
           placeholder='End Date'
         />
-        <label htmlFor='major'>Major</label>
-        <input
+        {!majorError ? (
+          <FormLabel htmlFor='major'>Major</FormLabel>
+        ) : (
+          <FormLabel htmlFor='major'>Major(Required)</FormLabel> // Todo Required in red (later)
+        )}
+        <Input
           type='text'
           id='major'
           name='major'
           value={formData.major}
           onChange={handleChange}
           placeholder='major'
+          isInvalid={majorError}
         />
         <Button
           type='submit'
