@@ -30,7 +30,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
 
   return (
     <div>
-      <h1>General Info</h1>
+      <h2>General Info</h2>
       <form className='info-form' onSubmit={handleSubmit}>
         {/* form inputs */}
         <label htmlFor='fname'>First Name</label>

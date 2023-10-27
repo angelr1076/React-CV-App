@@ -7,7 +7,7 @@ function EducationForm({ addEducation }) {
     degree: '',
     startDate: '',
     endDate: '',
-    description: '',
+    major: '',
   });
 
   const handleChange = event => {
@@ -23,14 +23,14 @@ function EducationForm({ addEducation }) {
       degree: '',
       startDate: '',
       endDate: '',
-      description: '',
+      major: '',
     });
     console.log(formData);
   };
 
   return (
     <div>
-      <h1>Education</h1>
+      <h3>Education</h3>
       <form className='info-form' onSubmit={handleSubmit}>
         {/* form inputs */}
         <label htmlFor='institution'>Institution</label>
@@ -69,14 +69,14 @@ function EducationForm({ addEducation }) {
           onChange={handleChange}
           placeholder='End Date'
         />
-        <label htmlFor='description'>Description</label>
+        <label htmlFor='major'>Major</label>
         <input
           type='text'
-          id='description'
-          name='description'
-          value={formData.description}
+          id='major'
+          name='major'
+          value={formData.major}
           onChange={handleChange}
-          placeholder='Description'
+          placeholder='major'
         />
         <button type='submit'>Add Education</button>
       </form>

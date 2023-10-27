@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { GeneralInfoForm } from './GeneralInfoForm';
-import { EducationForm } from './EducationForm';
-import { WorkExperienceForm } from './WorkExperienceForm';
+import { createContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
-function CVBuilder() {
+const CVContext = createContext();
+
+function CVProvider({ children }) {
   const [cvData, setCVData] = useState({
     generalInfo: {
       fname: '',
@@ -38,13 +38,15 @@ function CVBuilder() {
   };
 
   return (
-    <>
-      <h1>CV Builder</h1>
-      <GeneralInfoForm addGeneralInfo={addGeneralInfo} />
-      <EducationForm addEducation={addEducation} />
-      <WorkExperienceForm addWorkExperience={addWorkExperience} />
-    </>
+    <CVContext.Provider
+      value={{ cvData, addGeneralInfo, addEducation, addWorkExperience }}>
+      {children}
+    </CVContext.Provider>
   );
 }
 
-export { CVBuilder };
+CVProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export { CVContext, CVProvider };

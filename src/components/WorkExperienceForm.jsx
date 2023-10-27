@@ -30,7 +30,7 @@ function WorkExperienceForm({ addWorkExperience }) {
 
   return (
     <div>
-      <h1>Work Experience</h1>
+      <h3>Work Experience</h3>
       <form className='info-form' onSubmit={handleSubmit}>
         {/* form inputs */}
         <label htmlFor='company'>Company</label>

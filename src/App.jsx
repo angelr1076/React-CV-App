@@ -1,13 +1,16 @@
 import './assets/styles/style.css';
-import { CVBuilder } from './components/CVBuilder';
+import { CVProvider } from './components/CVProvider';
+import { CVCollector } from './components/CVCollector';
+import { CVDisplay } from './components/CVDisplay';
 
 function App() {
   return (
-    <>
-      <div className='main'>
-        <CVBuilder />
-      </div>
-    </>
+    <div className='main'>
+      <CVProvider>
+        <CVCollector />
+        <CVDisplay />
+      </CVProvider>
+    </div>
   );
 }
 
