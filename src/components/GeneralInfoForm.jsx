@@ -1,5 +1,13 @@
 import { useState } from 'react';
-import { Button } from './Button';
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  // FormErrorMessage,
+  // FormHelperText,
+} from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
+
 import PropTypes from 'prop-types';
 
 function GeneralInfoForm({ addGeneralInfo }) {
@@ -28,33 +36,47 @@ function GeneralInfoForm({ addGeneralInfo }) {
     });
   };
 
+  const fnameError = formData.fname === '';
+  const lnameError = formData.lname === '';
+
   return (
     <div>
       <h3>Personal Details</h3>
-      <form className='info-form' onSubmit={handleSubmit}>
-        {/* form inputs */}
-        <label htmlFor='fname'>First Name</label>
-        <input
+      <FormControl className='info-form' onSubmit={handleSubmit}>
+        {/* form Inputs */}
+        {!fnameError ? (
+          <FormLabel htmlFor='fname'>First Name</FormLabel>
+        ) : (
+          <FormLabel htmlFor='fname'>First Name (Required)</FormLabel> // Todo Required in red (later)
+        )}
+        <Input
           type='text'
           id='fname'
           name='fname'
           value={formData.fname}
           onChange={handleChange}
           placeholder='First Name'
-          required
+          isRequired
+          isInvalid={fnameError}
         />
-        <label htmlFor='lname'>Last Name</label>
-        <input
+
+        {!lnameError ? (
+          <FormLabel htmlFor='lname'>Last Name</FormLabel>
+        ) : (
+          <FormLabel htmlFor='lname'>Last Name (Required)</FormLabel> // Todo Required in red (later)
+        )}
+        <Input
           type='text'
           id='lname'
           name='lname'
           value={formData.lname}
           onChange={handleChange}
           placeholder='Last Name'
-          required
+          isRequired
+          isInvalid={lnameError}
         />
-        <label htmlFor='phone'>Phone</label>
-        <input
+        <FormLabel htmlFor='phone'>Phone</FormLabel>
+        <Input
           type='text'
           id='phone'
           name='phone'
@@ -62,8 +84,8 @@ function GeneralInfoForm({ addGeneralInfo }) {
           onChange={handleChange}
           placeholder='Phone'
         />
-        <label htmlFor='location'>Location</label>
-        <input
+        <FormLabel htmlFor='location'>Location</FormLabel>
+        <Input
           type='text'
           id='location'
           name='location'
@@ -71,8 +93,8 @@ function GeneralInfoForm({ addGeneralInfo }) {
           onChange={handleChange}
           placeholder='Location'
         />
-        <label htmlFor='email'>Email</label>
-        <input
+        <FormLabel htmlFor='email'>Email</FormLabel>
+        <Input
           type='text'
           id='email'
           name='email'
@@ -82,11 +104,12 @@ function GeneralInfoForm({ addGeneralInfo }) {
         />
         <Button
           type='submit'
-          value='Submit'
-          text='Add Details'
-          disabled={!(formData.fname && formData.lname)}
-        />
-      </form>
+          colorScheme='teal'
+          isDisabled={!(formData.fname && formData.lname)}
+          variant='outline'>
+          Add Details
+        </Button>
+      </FormControl>
     </div>
   );
 }

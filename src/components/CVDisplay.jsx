@@ -8,7 +8,7 @@ function CVDisplay() {
     <div className='display'>
       <section className='general-info'>
         {Object.keys(cvData.generalInfo).length > 0 && (
-          <div className='general-info__flex active'>
+          <div className='general-info__flex'>
             <div className='row name-row'>
               <h2>
                 {cvData.generalInfo.fname} {cvData.generalInfo.lname}
@@ -27,6 +27,7 @@ function CVDisplay() {
         {cvData.education.length > 0 && (
           <>
             <h2>Education</h2>
+
             {cvData.education.map((edu, index) => (
               <div key={index} className='education-item'>
                 <h4>{edu.institution}</h4>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from './Button';
+import { Button } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 function WorkExperienceForm({ addWorkExperience }) {
@@ -80,12 +80,13 @@ function WorkExperienceForm({ addWorkExperience }) {
         />
         <Button
           type='submit'
-          value='Submit'
-          text='Add Work'
-          disabled={
+          colorScheme='teal'
+          isDisabled={
             !(formData.company && formData.role && formData.responsibilities)
           }
-        />
+          variant='outline'>
+          Add Work
+        </Button>
       </form>
     </div>
   );

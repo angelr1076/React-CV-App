@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from './Button';
+import { Button } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 function EducationForm({ addEducation }) {
@@ -80,12 +80,13 @@ function EducationForm({ addEducation }) {
         />
         <Button
           type='submit'
-          value='Submit'
-          text='Add Education'
-          disabled={
+          colorScheme='teal'
+          isDisabled={
             !(formData.institution && formData.degree && formData.major)
           }
-        />
+          variant='outline'>
+          Add Education
+        </Button>
       </form>
     </div>
   );
