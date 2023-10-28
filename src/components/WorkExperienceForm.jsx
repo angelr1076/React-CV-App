@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { FormLabel, Input } from '@chakra-ui/react';
-import { Button } from '@chakra-ui/react';
-import { Heading } from '@chakra-ui/react';
+import { FormLabel, Input, Box, Heading, Text, Button } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 function WorkExperienceForm({ addWorkExperience }) {
@@ -35,8 +33,8 @@ function WorkExperienceForm({ addWorkExperience }) {
   const responsibilitiesError = formData.responsibilities === '';
 
   return (
-    <div>
-      <Heading as='h3' size='md' noOfLines={1}>
+    <Box p={5} borderRadius='5'>
+      <Heading as='h3' size='md' noOfLines={1} mb={5}>
         Work Experience
       </Heading>
       <form className='info-form' onSubmit={handleSubmit}>
@@ -54,6 +52,7 @@ function WorkExperienceForm({ addWorkExperience }) {
           onChange={handleChange}
           placeholder='Company'
           isInvalid={companyError}
+          mb={2}
         />
         {!roleError ? (
           <FormLabel htmlFor='role'>Role</FormLabel>
@@ -68,6 +67,7 @@ function WorkExperienceForm({ addWorkExperience }) {
           onChange={handleChange}
           placeholder='Role'
           isInvalid={roleError}
+          mb={2}
         />
         <label htmlFor='startDate'>Start Date</label>
         <Input
@@ -77,6 +77,7 @@ function WorkExperienceForm({ addWorkExperience }) {
           value={formData.startDate}
           onChange={handleChange}
           placeholder='Start Date'
+          mb={2}
         />
         <label htmlFor='endDate'>End Date</label>
         <Input
@@ -86,15 +87,15 @@ function WorkExperienceForm({ addWorkExperience }) {
           value={formData.endDate}
           onChange={handleChange}
           placeholder='End Date'
+          mb={2}
         />
         {!responsibilitiesError ? (
-          <FormLabel htmlFor='responsibilities'>responsibilities</FormLabel>
+          <FormLabel htmlFor='responsibilities'>Responsibilities</FormLabel>
         ) : (
           <FormLabel htmlFor='responsibilities'>
-            responsibilities (Required)
+            Responsibilities (Required)
           </FormLabel> // Todo Required in red (later)
         )}
-        <label htmlFor='responsibilities'>responsibilities</label>
         <Input
           type='text'
           id='responsibilities'
@@ -103,6 +104,7 @@ function WorkExperienceForm({ addWorkExperience }) {
           onChange={handleChange}
           placeholder='responsibilities'
           isInvalid={responsibilitiesError}
+          mb={2}
         />
         <Button
           type='submit'
@@ -110,11 +112,12 @@ function WorkExperienceForm({ addWorkExperience }) {
           isDisabled={
             !(formData.company && formData.role && formData.responsibilities)
           }
-          variant='outline'>
+          variant='outline'
+          mt={5}>
           Add Work
         </Button>
       </form>
-    </div>
+    </Box>
   );
 }
 

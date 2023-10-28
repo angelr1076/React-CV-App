@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { FormLabel, Input } from '@chakra-ui/react';
-import { Box, Heading, Text, Button } from '@chakra-ui/react';
+import { FormLabel, Input, Box, Heading, Text, Button } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 function GeneralInfoForm({ addGeneralInfo }) {
@@ -34,7 +33,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
 
   return (
     <Box p={5} borderRadius='5'>
-      <Heading as='h3' size='md' noOfLines={1}>
+      <Heading as='h3' size='md' noOfLines={1} mb={5}>
         Personal Details
       </Heading>
       <form className='info-form' onSubmit={handleSubmit}>
@@ -53,6 +52,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
           placeholder='First Name'
           isRequired
           isInvalid={fnameError}
+          mb={2}
         />
 
         {!lnameError ? (
@@ -69,6 +69,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
           placeholder='Last Name'
           isRequired
           isInvalid={lnameError}
+          mb={2}
         />
         <FormLabel htmlFor='phone'>Phone</FormLabel>
         <Input
@@ -78,6 +79,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
           value={formData.phone}
           onChange={handleChange}
           placeholder='Phone'
+          mb={2}
         />
         <FormLabel htmlFor='location'>Location</FormLabel>
         <Input
@@ -87,6 +89,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
           value={formData.location}
           onChange={handleChange}
           placeholder='Location'
+          mb={2}
         />
         <FormLabel htmlFor='email'>Email</FormLabel>
         <Input
@@ -96,12 +99,14 @@ function GeneralInfoForm({ addGeneralInfo }) {
           value={formData.email}
           onChange={handleChange}
           placeholder='Email'
+          mb={2}
         />
         <Button
           type='submit'
           colorScheme='teal'
           isDisabled={!(formData.fname && formData.lname)}
-          variant='outline'>
+          variant='outline'
+          mt={5}>
           Add Details
         </Button>
       </form>

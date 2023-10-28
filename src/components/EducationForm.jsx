@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { FormLabel, Input } from '@chakra-ui/react';
-import { Button } from '@chakra-ui/react';
-import { Heading } from '@chakra-ui/react';
+import { FormLabel, Input, Box, Heading, Text, Button } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 function EducationForm({ addEducation }) {
@@ -35,8 +33,8 @@ function EducationForm({ addEducation }) {
   const majorError = formData.major === '';
 
   return (
-    <div>
-      <Heading as='h3' size='md' noOfLines={1}>
+    <Box p={5} borderRadius='5'>
+      <Heading as='h3' size='md' noOfLines={1} mb={5}>
         Education
       </Heading>
       <form className='info-form' onSubmit={handleSubmit}>
@@ -54,6 +52,7 @@ function EducationForm({ addEducation }) {
           onChange={handleChange}
           placeholder='Institution'
           isInvalid={institutionError}
+          mb={2}
         />
         {!degreeError ? (
           <FormLabel htmlFor='degree'>Degree</FormLabel>
@@ -68,6 +67,7 @@ function EducationForm({ addEducation }) {
           onChange={handleChange}
           placeholder='Degree'
           isInvalid={degreeError}
+          mb={2}
         />
         <FormLabel htmlFor='startDate'>Start Date</FormLabel>
         <Input
@@ -77,6 +77,7 @@ function EducationForm({ addEducation }) {
           value={formData.startDate}
           onChange={handleChange}
           placeholder='Start Date'
+          mb={2}
         />
         <FormLabel htmlFor='endDate'>End Date</FormLabel>
         <Input
@@ -86,11 +87,12 @@ function EducationForm({ addEducation }) {
           value={formData.endDate}
           onChange={handleChange}
           placeholder='End Date'
+          mb={2}
         />
         {!majorError ? (
           <FormLabel htmlFor='major'>Major</FormLabel>
         ) : (
-          <FormLabel htmlFor='major'>Major(Required)</FormLabel> // Todo Required in red (later)
+          <FormLabel htmlFor='major'>Major (Required)</FormLabel> // Todo Required in red (later)
         )}
         <Input
           type='text'
@@ -100,6 +102,7 @@ function EducationForm({ addEducation }) {
           onChange={handleChange}
           placeholder='major'
           isInvalid={majorError}
+          mb={2}
         />
         <Button
           type='submit'
@@ -107,11 +110,12 @@ function EducationForm({ addEducation }) {
           isDisabled={
             !(formData.institution && formData.degree && formData.major)
           }
-          variant='outline'>
+          variant='outline'
+          mt={5}>
           Add Education
         </Button>
       </form>
-    </div>
+    </Box>
   );
 }
 
