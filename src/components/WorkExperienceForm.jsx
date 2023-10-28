@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormLabel, Input, Box, Heading, Text, Button } from '@chakra-ui/react';
+import { FormLabel, Input, Box, Heading, Button } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 function WorkExperienceForm({ addWorkExperience }) {
