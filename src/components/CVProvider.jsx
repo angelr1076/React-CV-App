@@ -6,8 +6,7 @@ const CVContext = createContext();
 function CVProvider({ children }) {
   const [cvData, setCVData] = useState({
     generalInfo: {
-      fname: '',
-      lname: '',
+      fullname: '',
       phone: '',
       location: '',
       email: '',

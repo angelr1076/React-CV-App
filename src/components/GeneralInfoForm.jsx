@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function GeneralInfoForm({ addGeneralInfo }) {
   const [formData, setFormData] = useState({
-    fname: '',
+    fullName: '',
     lname: '',
     phone: '',
     location: '',
@@ -19,17 +19,9 @@ function GeneralInfoForm({ addGeneralInfo }) {
   const handleSubmit = event => {
     event.preventDefault();
     addGeneralInfo(formData);
-    setFormData({
-      fname: '',
-      lname: '',
-      phone: '',
-      location: '',
-      email: '',
-    });
   };
 
-  const fnameError = formData.fname === '';
-  const lnameError = formData.lname === '';
+  const fullNameError = formData.fullName === '';
 
   return (
     <Box p={5} borderRadius='5'>
@@ -38,37 +30,20 @@ function GeneralInfoForm({ addGeneralInfo }) {
       </Heading>
       <form className='info-form' onSubmit={handleSubmit}>
         {/* form Inputs */}
-        {!fnameError ? (
-          <FormLabel htmlFor='fname'>First Name</FormLabel>
+        {!fullNameError ? (
+          <FormLabel htmlFor='fullName'>Full Name</FormLabel>
         ) : (
-          <FormLabel htmlFor='fname'>First Name (Required)</FormLabel> // Todo Required in red (later)
+          <FormLabel htmlFor='fullName'>Full Name (Required)</FormLabel> // Todo Required in red (later)
         )}
         <Input
           type='text'
-          id='fname'
-          name='fname'
-          value={formData.fname}
+          id='fullName'
+          name='fullName'
+          value={formData.fullName}
           onChange={handleChange}
           placeholder='First Name'
           isRequired
-          isInvalid={fnameError}
-          mb={2}
-        />
-
-        {!lnameError ? (
-          <FormLabel htmlFor='lname'>Last Name</FormLabel>
-        ) : (
-          <FormLabel htmlFor='lname'>Last Name (Required)</FormLabel> // Todo Required in red (later)
-        )}
-        <Input
-          type='text'
-          id='lname'
-          name='lname'
-          value={formData.lname}
-          onChange={handleChange}
-          placeholder='Last Name'
-          isRequired
-          isInvalid={lnameError}
+          isInvalid={fullNameError}
           mb={2}
         />
         <FormLabel htmlFor='phone'>Phone</FormLabel>
@@ -104,7 +79,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
         <Button
           type='submit'
           colorScheme='teal'
-          isDisabled={!(formData.fname && formData.lname)}
+          isDisabled={!formData.fullName}
           variant='outline'
           mt={5}>
           Add Details

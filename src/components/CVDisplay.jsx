@@ -10,9 +10,7 @@ function CVDisplay() {
         {Object.keys(cvData.generalInfo).length > 0 && (
           <div className='general-info__flex'>
             <div className='row name-row'>
-              <h2>
-                {cvData.generalInfo.fname} {cvData.generalInfo.lname}
-              </h2>
+              <h1>{cvData.generalInfo.fullName}</h1>
             </div>
             <div className='row contact-row'>
               {cvData.generalInfo.phone && `${cvData.generalInfo.phone} |`}{' '}
