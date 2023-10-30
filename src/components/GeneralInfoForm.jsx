@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormLabel, Input, Box, Heading, Button } from '@chakra-ui/react';
+import { FormLabel, Input, Box, Button } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 function GeneralInfoForm({ addGeneralInfo }) {
@@ -25,9 +25,6 @@ function GeneralInfoForm({ addGeneralInfo }) {
 
   return (
     <Box boxShadow='2xl' p='6' mb={5} rounded='md' bg='white'>
-      <Heading as='h3' size='md' noOfLines={1} mb={5}>
-        Personal Details
-      </Heading>
       <form className='info-form' onSubmit={handleSubmit}>
         {/* form Inputs */}
         {!fullNameError ? (

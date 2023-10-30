@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormLabel, Input, Box, Heading, Button } from '@chakra-ui/react';
+import { FormLabel, Input, Box, Button } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 function WorkExperienceForm({ addWorkExperience }) {
@@ -19,13 +19,6 @@ function WorkExperienceForm({ addWorkExperience }) {
   const handleSubmit = event => {
     event.preventDefault();
     addWorkExperience(formData);
-    setFormData({
-      company: '',
-      role: '',
-      startDate: '',
-      endDate: '',
-      responsibilities: '',
-    });
   };
 
   const companyError = formData.company === '';
@@ -34,9 +27,6 @@ function WorkExperienceForm({ addWorkExperience }) {
 
   return (
     <Box boxShadow='2xl' p={6} mb={5} rounded='md' bg='white'>
-      <Heading as='h3' size='md' noOfLines={1} mb={5}>
-        Work Experience
-      </Heading>
       <form className='info-form' onSubmit={handleSubmit}>
         {/* form Inputs */}
         {!companyError ? (
