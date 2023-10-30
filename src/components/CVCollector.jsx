@@ -25,6 +25,7 @@ function CVCollector() {
   const handleAddEducationForm = () => {
     setEducationForms(prevForms => [...prevForms, prevForms.length]);
   };
+
   const handleAddWorkForm = () => {
     setWorkForms(prevForms => [...prevForms, prevForms.length]);
   };
@@ -42,7 +43,7 @@ function CVCollector() {
           <Text fontSize='2xl'>Education</Text>
         </Heading>
         {/* Education Forms */}
-        {educationForms.map((item, index) => (
+        {educationForms.map((_, index) => (
           <Accordion key={index} allowMultiple>
             <AccordionItem>
               <h2>
@@ -73,7 +74,7 @@ function CVCollector() {
         <Heading as='h3' size='md' noOfLines={1} mb={5}>
           <Text fontSize='2xl'>Work Experience</Text>
         </Heading>
-        {workForms.map((item, index) => (
+        {workForms.map((_, index) => (
           <WorkExperienceForm
             key={index}
             addWorkExperience={addWorkExperience}

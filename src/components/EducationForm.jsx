@@ -33,10 +33,22 @@ function EducationForm({ addEducation }) {
       <form className='info-form' onSubmit={handleSubmit}>
         {/* form Inputs */}
         {!institutionError ? (
-          <FormLabel htmlFor='institution'>Institution</FormLabel>
+          <FormLabel htmlFor='institution' fontSize='sm'>
+            Institution
+          </FormLabel>
         ) : (
-          <FormLabel htmlFor='institution'>Institution (Required)</FormLabel> // Todo Required in red (later)
+          <FormLabel htmlFor='institution' fontSize='sm'>
+            Institution (Required)
+          </FormLabel> // TODO: Required in red (later)
         )}
+        <Input
+          type='text'
+          id='id'
+          name='id'
+          value={formData.id}
+          onChange={handleChange}
+          hidden
+        />
         <Input
           type='text'
           id='institution'
@@ -45,12 +57,17 @@ function EducationForm({ addEducation }) {
           onChange={handleChange}
           placeholder='Institution'
           isInvalid={institutionError}
+          fontSize='sm'
           mb={2}
         />
         {!degreeError ? (
-          <FormLabel htmlFor='degree'>Degree</FormLabel>
+          <FormLabel htmlFor='degree' fontSize='sm'>
+            Degree
+          </FormLabel>
         ) : (
-          <FormLabel htmlFor='degree'>Degree (Required)</FormLabel> // Todo Required in red (later)
+          <FormLabel htmlFor='degree' fontSize='sm'>
+            Degree (Required)
+          </FormLabel> // TODO: Required in red (later)
         )}
         <Input
           type='text'
@@ -60,9 +77,12 @@ function EducationForm({ addEducation }) {
           onChange={handleChange}
           placeholder='Degree'
           isInvalid={degreeError}
+          fontSize='sm'
           mb={2}
         />
-        <FormLabel htmlFor='startDate'>Start Date</FormLabel>
+        <FormLabel htmlFor='startDate' fontSize='sm'>
+          Start Date
+        </FormLabel>
         <Input
           type='date'
           id='startDate'
@@ -70,9 +90,12 @@ function EducationForm({ addEducation }) {
           value={formData.startDate}
           onChange={handleChange}
           placeholder='Start Date'
+          fontSize='sm'
           mb={2}
         />
-        <FormLabel htmlFor='endDate'>End Date</FormLabel>
+        <FormLabel htmlFor='endDate' fontSize='sm'>
+          End Date
+        </FormLabel>
         <Input
           type='date'
           id='endDate'
@@ -80,12 +103,17 @@ function EducationForm({ addEducation }) {
           value={formData.endDate}
           onChange={handleChange}
           placeholder='End Date'
+          fontSize='sm'
           mb={2}
         />
         {!majorError ? (
-          <FormLabel htmlFor='major'>Major</FormLabel>
+          <FormLabel htmlFor='major' fontSize='sm'>
+            Major
+          </FormLabel>
         ) : (
-          <FormLabel htmlFor='major'>Major (Required)</FormLabel> // Todo Required in red (later)
+          <FormLabel htmlFor='major' fontSize='sm'>
+            Major (Required)
+          </FormLabel> // Todo Required in red (later)
         )}
         <Input
           type='text'
@@ -95,6 +123,7 @@ function EducationForm({ addEducation }) {
           onChange={handleChange}
           placeholder='major'
           isInvalid={majorError}
+          fontSize='sm'
           mb={2}
         />
         <Button
@@ -104,6 +133,7 @@ function EducationForm({ addEducation }) {
             !(formData.institution && formData.degree && formData.major)
           }
           variant='outline'
+          fontSize='sm'
           mt={5}>
           Add Education
         </Button>

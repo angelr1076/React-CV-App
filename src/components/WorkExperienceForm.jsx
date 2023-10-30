@@ -30,9 +30,13 @@ function WorkExperienceForm({ addWorkExperience }) {
       <form className='info-form' onSubmit={handleSubmit}>
         {/* form Inputs */}
         {!companyError ? (
-          <FormLabel htmlFor='company'>Company</FormLabel>
+          <FormLabel htmlFor='company' fontSize='sm'>
+            Company
+          </FormLabel>
         ) : (
-          <FormLabel htmlFor='company'>Company (Required)</FormLabel> // Todo Required in red (later)
+          <FormLabel htmlFor='company' fontSize='sm'>
+            Company (Required)
+          </FormLabel> // TODO: Required in red (later)
         )}
         <Input
           type='text'
@@ -42,12 +46,17 @@ function WorkExperienceForm({ addWorkExperience }) {
           onChange={handleChange}
           placeholder='Company'
           isInvalid={companyError}
+          fontSize='sm'
           mb={2}
         />
         {!roleError ? (
-          <FormLabel htmlFor='role'>Role</FormLabel>
+          <FormLabel htmlFor='role' fontSize='sm'>
+            Role
+          </FormLabel>
         ) : (
-          <FormLabel htmlFor='role'>Role (Required)</FormLabel> // Todo Required in red (later)
+          <FormLabel htmlFor='role' fontSize='sm'>
+            Role (Required)
+          </FormLabel> // TODO: Required in red (later)
         )}
         <Input
           type='text'
@@ -57,9 +66,12 @@ function WorkExperienceForm({ addWorkExperience }) {
           onChange={handleChange}
           placeholder='Role'
           isInvalid={roleError}
+          fontSize='sm'
           mb={2}
         />
-        <label htmlFor='startDate'>Start Date</label>
+        <label htmlFor='startDate' fontSize='sm'>
+          Start Date
+        </label>
         <Input
           type='date'
           id='startDate'
@@ -67,9 +79,12 @@ function WorkExperienceForm({ addWorkExperience }) {
           value={formData.startDate}
           onChange={handleChange}
           placeholder='Start Date'
+          fontSize='sm'
           mb={2}
         />
-        <label htmlFor='endDate'>End Date</label>
+        <label htmlFor='endDate' fontSize='sm'>
+          End Date
+        </label>
         <Input
           type='date'
           id='endDate'
@@ -77,12 +92,15 @@ function WorkExperienceForm({ addWorkExperience }) {
           value={formData.endDate}
           onChange={handleChange}
           placeholder='End Date'
+          fontSize='sm'
           mb={2}
         />
         {!responsibilitiesError ? (
-          <FormLabel htmlFor='responsibilities'>Responsibilities</FormLabel>
+          <FormLabel htmlFor='responsibilities' fontSize='sm'>
+            Responsibilities
+          </FormLabel>
         ) : (
-          <FormLabel htmlFor='responsibilities'>
+          <FormLabel htmlFor='responsibilities' fontSize='sm'>
             Responsibilities (Required)
           </FormLabel> // Todo Required in red (later)
         )}
@@ -94,6 +112,7 @@ function WorkExperienceForm({ addWorkExperience }) {
           onChange={handleChange}
           placeholder='responsibilities'
           isInvalid={responsibilitiesError}
+          fontSize='sm'
           mb={2}
         />
         <Button
@@ -103,6 +122,7 @@ function WorkExperienceForm({ addWorkExperience }) {
             !(formData.company && formData.role && formData.responsibilities)
           }
           variant='outline'
+          fontSize='sm'
           mt={5}>
           Add Work
         </Button>

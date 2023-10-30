@@ -28,9 +28,13 @@ function GeneralInfoForm({ addGeneralInfo }) {
       <form className='info-form' onSubmit={handleSubmit}>
         {/* form Inputs */}
         {!fullNameError ? (
-          <FormLabel htmlFor='fullName'>Full Name</FormLabel>
+          <FormLabel htmlFor='fullName' fontSize='sm'>
+            Full Name
+          </FormLabel>
         ) : (
-          <FormLabel htmlFor='fullName'>Full Name (Required)</FormLabel> // Todo Required in red (later)
+          <FormLabel htmlFor='fullName' fontSize='sm'>
+            Full Name (Required)
+          </FormLabel> // TODO: Required in red (later)
         )}
         <Input
           type='text'
@@ -41,9 +45,12 @@ function GeneralInfoForm({ addGeneralInfo }) {
           placeholder='First Name'
           isRequired
           isInvalid={fullNameError}
+          fontSize='sm'
           mb={2}
         />
-        <FormLabel htmlFor='phone'>Phone</FormLabel>
+        <FormLabel htmlFor='phone' fontSize='sm'>
+          Phone
+        </FormLabel>
         <Input
           type='text'
           id='phone'
@@ -51,9 +58,12 @@ function GeneralInfoForm({ addGeneralInfo }) {
           value={formData.phone}
           onChange={handleChange}
           placeholder='Phone'
+          fontSize='sm'
           mb={2}
         />
-        <FormLabel htmlFor='location'>Location</FormLabel>
+        <FormLabel htmlFor='location' fontSize='sm'>
+          Location
+        </FormLabel>
         <Input
           type='text'
           id='location'
@@ -61,9 +71,12 @@ function GeneralInfoForm({ addGeneralInfo }) {
           value={formData.location}
           onChange={handleChange}
           placeholder='Location'
+          fontSize='sm'
           mb={2}
         />
-        <FormLabel htmlFor='email'>Email</FormLabel>
+        <FormLabel htmlFor='email' fontSize='sm'>
+          Email
+        </FormLabel>
         <Input
           type='text'
           id='email'
@@ -71,6 +84,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
           value={formData.email}
           onChange={handleChange}
           placeholder='Email'
+          fontSize='sm'
           mb={2}
         />
         <Button
@@ -78,6 +92,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
           colorScheme='teal'
           isDisabled={!formData.fullName}
           variant='outline'
+          fontSize='sm'
           mt={5}>
           Add Details
         </Button>

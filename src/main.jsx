@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
 import './assets/styles/style.css';
+import App from './App.jsx';
 import { ChakraProvider } from '@chakra-ui/react';
 import { Box } from '@chakra-ui/react';
 

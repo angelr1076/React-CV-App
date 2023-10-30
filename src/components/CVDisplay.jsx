@@ -29,6 +29,7 @@ function CVDisplay() {
 
             {cvData.education.map((edu, index) => (
               <div key={index} className='education-item'>
+                TODO:{/* Add ID to this div above */}
                 <h4>{edu.institution}</h4>
                 <p>
                   {edu.degree} {edu.major}
