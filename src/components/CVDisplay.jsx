@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { CVContext } from './CVProvider';
-import { FormLabel, Input, Box, Heading, Button } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 function CVDisplay() {
   const { cvData } = useContext(CVContext);
