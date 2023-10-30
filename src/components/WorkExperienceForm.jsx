@@ -33,7 +33,7 @@ function WorkExperienceForm({ addWorkExperience }) {
   const responsibilitiesError = formData.responsibilities === '';
 
   return (
-    <Box p={5} borderRadius='5'>
+    <Box boxShadow='2xl' p={6} mb={5} rounded='md' bg='white'>
       <Heading as='h3' size='md' noOfLines={1} mb={5}>
         Work Experience
       </Heading>

@@ -1,11 +1,12 @@
 import { useContext } from 'react';
 import { CVContext } from './CVProvider';
+import { FormLabel, Input, Box, Heading, Button } from '@chakra-ui/react';
 
 function CVDisplay() {
   const { cvData } = useContext(CVContext);
 
   return (
-    <div className='display'>
+    <Box className='display' boxShadow='lg' p='6' rounded='md' bg='white'>
       <section className='general-info'>
         {Object.keys(cvData.generalInfo).length > 0 && (
           <div className='general-info__flex'>
@@ -59,7 +60,7 @@ function CVDisplay() {
           </>
         )}
       </section>
-    </div>
+    </Box>
   );
 }
 
