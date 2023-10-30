@@ -124,7 +124,18 @@ function WorkExperienceForm({ addWorkExperience }) {
           variant='outline'
           fontSize='sm'
           mt={5}>
-          Add Work
+          Save
+        </Button>
+        <Button
+          type='button'
+          colorScheme='yellow'
+          variant='outline'
+          fontSize='sm'
+          mt={5}>
+          Edit
+        </Button>
+        <Button type='button' colorScheme='red' fontSize='sm' mt={5}>
+          Delete
         </Button>
       </form>
     </Box>

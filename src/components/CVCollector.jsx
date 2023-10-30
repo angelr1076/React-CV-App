@@ -75,10 +75,25 @@ function CVCollector() {
           <Text fontSize='2xl'>Work Experience</Text>
         </Heading>
         {workForms.map((_, index) => (
-          <WorkExperienceForm
-            key={index}
-            addWorkExperience={addWorkExperience}
-          />
+          <Accordion key={index} allowMultiple>
+            <AccordionItem>
+              <h2>
+                <AccordionButton>
+                  <Box as='span' flex='1' textAlign='left'>
+                    Work ({index + 1})
+                  </Box>
+
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4}>
+                <WorkExperienceForm
+                  key={index}
+                  addWorkExperience={addWorkExperience}
+                />
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
         ))}
         <Button
           onClick={handleAddWorkForm}

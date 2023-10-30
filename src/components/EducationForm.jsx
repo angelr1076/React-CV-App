@@ -128,14 +128,25 @@ function EducationForm({ addEducation }) {
         />
         <Button
           type='submit'
-          colorScheme='teal'
+          colorScheme='green'
           isDisabled={
             !(formData.institution && formData.degree && formData.major)
           }
           variant='outline'
           fontSize='sm'
           mt={5}>
-          Add Education
+          Save
+        </Button>
+        <Button
+          type='button'
+          colorScheme='yellow'
+          variant='outline'
+          fontSize='sm'
+          mt={5}>
+          Edit
+        </Button>
+        <Button type='button' colorScheme='red' fontSize='sm' mt={5}>
+          Delete
         </Button>
       </form>
     </Box>
