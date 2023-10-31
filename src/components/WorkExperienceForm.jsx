@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { FormLabel, Input, Box, Button } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
 
 function WorkExperienceForm({ addWorkExperience }) {
   const [formData, setFormData] = useState({
+    id: uuidv4(),
     company: '',
     role: '',
     startDate: '',

@@ -13,6 +13,7 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  Divider,
 } from '@chakra-ui/react';
 import { GrAddCircle } from 'react-icons/gr';
 
@@ -38,6 +39,7 @@ function CVCollector() {
         </Heading>
         <GeneralInfoForm addGeneralInfo={addGeneralInfo} />
       </div>
+      <Divider mt={5} mb={5} />
       <div>
         <Heading as='h3' size='md' noOfLines={1} mb={5}>
           <Text fontSize='2xl'>Education</Text>
@@ -60,6 +62,7 @@ function CVCollector() {
             </AccordionItem>
           </Accordion>
         ))}
+        {/* New Education Form */}
         <Button
           onClick={handleAddEducationForm}
           leftIcon={<GrAddCircle />}
@@ -69,6 +72,7 @@ function CVCollector() {
           Education
         </Button>
       </div>
+      <Divider mt={5} mb={5} />
       <div>
         {/* Work forms */}
         <Heading as='h3' size='md' noOfLines={1} mb={5}>
@@ -95,6 +99,7 @@ function CVCollector() {
             </AccordionItem>
           </Accordion>
         ))}
+        {/* New Work Form */}
         <Button
           onClick={handleAddWorkForm}
           leftIcon={<GrAddCircle />}

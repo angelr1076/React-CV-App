@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { FormLabel, Input, Box, Button } from '@chakra-ui/react';
+import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 
 function GeneralInfoForm({ addGeneralInfo }) {
   const [formData, setFormData] = useState({
+    id: '',
     fullName: '',
     lname: '',
     phone: '',
@@ -18,10 +20,14 @@ function GeneralInfoForm({ addGeneralInfo }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    addGeneralInfo(formData);
+    const id = uuidv4();
+    setFormData(prevState => ({ ...prevState, id }));
+    addGeneralInfo({ ...formData, id });
+    console.log(id);
   };
 
   const fullNameError = formData.fullName === '';
+  const { id } = formData;
 
   return (
     <Box boxShadow='2xl' p='6' mb={5} rounded='md' bg='white'>
@@ -94,7 +100,7 @@ function GeneralInfoForm({ addGeneralInfo }) {
           variant='outline'
           fontSize='sm'
           mt={5}>
-          Add Details
+          {id && id !== '' && id !== undefined ? 'Update' : 'Add'}
         </Button>
       </form>
     </Box>

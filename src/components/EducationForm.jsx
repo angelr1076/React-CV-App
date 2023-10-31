@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 function EducationForm({ addEducation }) {
   const [formData, setFormData] = useState({
-    id: uuidv4(),
+    id: '',
     institution: '',
     degree: '',
     startDate: '',
@@ -20,8 +20,9 @@ function EducationForm({ addEducation }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    addEducation(formData);
-    console.log(formData);
+    const id = uuidv4();
+    addEducation({ ...formData, id });
+    console.log({ ...formData, id });
   };
 
   const institutionError = formData.institution === '';
@@ -41,14 +42,6 @@ function EducationForm({ addEducation }) {
             Institution (Required)
           </FormLabel> // TODO: Required in red (later)
         )}
-        <Input
-          type='text'
-          id='id'
-          name='id'
-          value={formData.id}
-          onChange={handleChange}
-          hidden
-        />
         <Input
           type='text'
           id='institution'

@@ -5,6 +5,10 @@ import { Box } from '@chakra-ui/react';
 function CVDisplay() {
   const { cvData } = useContext(CVContext);
 
+  // useEffect(() => {
+  //   console.log(cvData.generalInfo.id); // Log the ID of the generalInfo object
+  // }, [cvData]);
+
   return (
     <Box className='display' boxShadow='lg' p='6' rounded='md' bg='white'>
       <section className='general-info'>
