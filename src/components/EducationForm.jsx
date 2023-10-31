@@ -119,28 +119,37 @@ function EducationForm({ addEducation }) {
           fontSize='sm'
           mb={2}
         />
-        <Button
-          type='submit'
-          colorScheme='green'
-          isDisabled={
-            !(formData.institution && formData.degree && formData.major)
-          }
-          variant='outline'
-          fontSize='sm'
-          mt={5}>
-          Save
-        </Button>
-        <Button
-          type='button'
-          colorScheme='yellow'
-          variant='outline'
-          fontSize='sm'
-          mt={5}>
-          Edit
-        </Button>
-        <Button type='button' colorScheme='red' fontSize='sm' mt={5}>
-          Delete
-        </Button>
+        <div className='btn-container'>
+          <Button
+            type='submit'
+            className='btn btn-save'
+            colorScheme='green'
+            isDisabled={
+              !(formData.institution && formData.degree && formData.major)
+            }
+            variant='outline'
+            fontSize='sm'
+            mt={5}>
+            Save
+          </Button>
+          <Button
+            type='button'
+            className='btn btn-cancel'
+            colorScheme='yellow'
+            variant='outline'
+            fontSize='sm'
+            mt={5}>
+            Cancel
+          </Button>
+          <Button
+            type='button'
+            className='btn btn-delete'
+            colorScheme='red'
+            fontSize='sm'
+            mt={5}>
+            Delete
+          </Button>
+        </div>
       </form>
     </Box>
   );

@@ -52,6 +52,16 @@ body {
   flex-direction: column;
 }
 
+.btn-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1em;
+}
+
+.btn {
+  width: 33%;
+}
+
 /* a {
   font-weight: 500;
   color: #646cff;
