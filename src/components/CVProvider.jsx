@@ -22,10 +22,10 @@ function CVProvider({ children }) {
     }));
   };
 
-  const addEducation = formData => {
+  const addEducation = (formData, id) => {
     setCVData(prevState => ({
       ...prevState,
-      education: [...prevState.education, formData],
+      education: [...prevState.education, { ...formData, id }],
     }));
   };
 

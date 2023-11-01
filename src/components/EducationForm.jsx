@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function EducationForm({ id, addEducation }) {
   const [formData, setFormData] = useState({
-    id: '',
+    id,
     institution: '',
     degree: '',
     startDate: '',
@@ -40,7 +40,6 @@ function EducationForm({ id, addEducation }) {
             Institution (Required)
           </FormLabel> // TODO: Required in red (later)
         )}
-        {/* Add readonly id input field */}
         <Input
           type='text'
           id='id'

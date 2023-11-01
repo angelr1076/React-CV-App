@@ -3,6 +3,8 @@ import { GeneralInfoForm } from './GeneralInfoForm';
 import { EducationForm } from './EducationForm';
 import { WorkExperienceForm } from './WorkExperienceForm';
 import { CVContext } from './CVProvider';
+import { v4 as uuidv4 } from 'uuid';
+
 import {
   Heading,
   Text,
@@ -20,11 +22,11 @@ import { GrAddCircle } from 'react-icons/gr';
 function CVCollector() {
   const { addGeneralInfo, addEducation, addWorkExperience } =
     useContext(CVContext); // From CVProvider
-  const [educationForms, setEducationForms] = useState([0]);
+  const [educationForms, setEducationForms] = useState([{ id: uuidv4() }]);
   const [workForms, setWorkForms] = useState([0]);
 
   const handleAddEducationForm = () => {
-    setEducationForms(prevForms => [...prevForms, prevForms.length]);
+    setEducationForms(prevForms => [...prevForms, { id: uuidv4() }]);
   };
 
   const handleAddWorkForm = () => {
@@ -45,8 +47,8 @@ function CVCollector() {
           <Text fontSize='2xl'>Education</Text>
         </Heading>
         {/* Education Forms */}
-        {educationForms.map((_, index) => (
-          <Accordion key={index} allowMultiple>
+        {educationForms.map((form, index) => (
+          <Accordion key={form.id} allowMultiple>
             <AccordionItem>
               <h2>
                 <AccordionButton>
@@ -57,7 +59,11 @@ function CVCollector() {
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                <EducationForm key={index} addEducation={addEducation} />
+                <EducationForm
+                  key={index}
+                  id={form.id.toString()}
+                  addEducation={addEducation}
+                />
               </AccordionPanel>
             </AccordionItem>
           </Accordion>
