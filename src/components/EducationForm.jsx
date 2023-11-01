@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { FormLabel, Input, Box, Button } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
 
-function EducationForm({ addEducation }) {
+function EducationForm({ id, addEducation }) {
   const [formData, setFormData] = useState({
     id: '',
     institution: '',
@@ -20,7 +19,6 @@ function EducationForm({ addEducation }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const id = uuidv4();
     addEducation({ ...formData, id });
     console.log({ ...formData, id });
   };
@@ -42,6 +40,18 @@ function EducationForm({ addEducation }) {
             Institution (Required)
           </FormLabel> // TODO: Required in red (later)
         )}
+        {/* Add readonly id input field */}
+        <Input
+          type='text'
+          id='id'
+          name='id'
+          value={formData.id}
+          onChange={handleChange}
+          placeholder='ID'
+          isReadOnly
+          fontSize='sm'
+          mb={2}
+        />
         <Input
           type='text'
           id='institution'
@@ -156,6 +166,7 @@ function EducationForm({ addEducation }) {
 }
 
 EducationForm.propTypes = {
+  id: PropTypes.string.isRequired,
   addEducation: PropTypes.func.isRequired,
 };
 
