@@ -10,6 +10,11 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
 } from '@chakra-ui/react';
 
 function GeneralInfo({ info, onChange, isSubmitted }) {
@@ -29,43 +34,54 @@ function GeneralInfo({ info, onChange, isSubmitted }) {
           </CardBody>
         </Card>
       ) : (
-        <Card mb={5}>
-          <CardBody>
-            <Heading as='h1' size='xl' mb={5}>
-              Personal Info
-            </Heading>
-            <FormLabel className='label' htmlFor='name'>
-              Name
-            </FormLabel>
-            <Input
-              className='input'
-              name='name'
-              value={info.name}
-              onChange={handleInputChange}
-              placeholder='Name'
-            />
-            <FormLabel className='label' htmlFor='email'>
-              Email
-            </FormLabel>
-            <Input
-              className='input'
-              name='email'
-              value={info.email}
-              onChange={handleInputChange}
-              placeholder='Email'
-            />
-            <FormLabel className='label' htmlFor='phone'>
-              Phone
-            </FormLabel>
-            <Input
-              className='input'
-              name='phone'
-              value={info.phone}
-              onChange={handleInputChange}
-              placeholder='Phone'
-            />
-          </CardBody>
-        </Card>
+        <Accordion defaultIndex={[0]} allowMultiple>
+          <AccordionItem>
+            <h1>
+              <AccordionButton>
+                <Box as='span' flex='1' textAlign='left' fontSize='2xl'>
+                  Personal Information
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+            </h1>
+            <AccordionPanel pb={4}>
+              <Card mb={5}>
+                <CardBody>
+                  <FormLabel className='label' htmlFor='name'>
+                    Name
+                  </FormLabel>
+                  <Input
+                    className='input'
+                    name='name'
+                    value={info.name}
+                    onChange={handleInputChange}
+                    placeholder='Name'
+                  />
+                  <FormLabel className='label' htmlFor='email'>
+                    Email
+                  </FormLabel>
+                  <Input
+                    className='input'
+                    name='email'
+                    value={info.email}
+                    onChange={handleInputChange}
+                    placeholder='Email'
+                  />
+                  <FormLabel className='label' htmlFor='phone'>
+                    Phone
+                  </FormLabel>
+                  <Input
+                    className='input'
+                    name='phone'
+                    value={info.phone}
+                    onChange={handleInputChange}
+                    placeholder='Phone'
+                  />
+                </CardBody>
+              </Card>
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
       )}
     </>
   );

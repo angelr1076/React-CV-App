@@ -3,7 +3,15 @@ import { useState } from 'react';
 import GeneralInfo from './GeneralInfo';
 import EducationalExp from './EducationalExp';
 import PracticalExp from './PracticalExp';
-import { Box, Heading } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+} from '@chakra-ui/react';
 
 function CVForm() {
   const [generalInfo, setGeneralInfo] = useState({
@@ -59,17 +67,28 @@ function CVForm() {
         onChange={handleGeneralInfoChange}
         isSubmitted={isSubmitted}
       />
-      <Heading as='h1' size='xl' mb={5}>
-        Education
-      </Heading>
       {education.map((education, index) => (
-        <EducationalExp
-          key={index}
-          education={education}
-          index={index}
-          onChange={handleEducationChange}
-          isSubmitted={isSubmitted}
-        />
+        <Accordion key={index} defaultIndex={[0]} allowMultiple>
+          <AccordionItem>
+            <h2>
+              <AccordionButton>
+                <Box as='span' flex='1' textAlign='left' fontSize='2xl'>
+                  Education {index + 1}
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+            </h2>
+            <AccordionPanel pb={4}>
+              <EducationalExp
+                key={index}
+                education={education}
+                index={index}
+                onChange={handleEducationChange}
+                isSubmitted={isSubmitted}
+              />
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
       ))}
       <button className='button' onClick={addEducation}>
         Add Education
