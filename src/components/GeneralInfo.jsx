@@ -27,12 +27,9 @@ function GeneralInfo({ info, onChange, isSubmitted }) {
     <>
       {' '}
       {isSubmitted ? (
-        <Card>
-          <CardBody>
-            <Text>{info.name}</Text>
-            <Text>{info.email}</Text> <Text>{info.phone}</Text>
-          </CardBody>
-        </Card>
+        <div>
+          {info.name} {info.email} {info.phone}
+        </div>
       ) : (
         <Accordion defaultIndex={[0]} allowMultiple>
           <AccordionItem>

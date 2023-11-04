@@ -35,9 +35,11 @@ function CVForm() {
   };
 
   const handleEducationChange = (updatedEducation, index) => {
-    const newEducation = education.slice();
-    newEducation[index] = updatedEducation;
-    setEducation(newEducation);
+    setEducation(prevEducation =>
+      prevEducation.map((education, idx) =>
+        idx === index ? updatedEducation : education
+      )
+    );
   };
 
   const handleExperienceChange = updatedExperience => {
@@ -69,12 +71,12 @@ function CVForm() {
           isSubmitted={isSubmitted}
         />
       ))}
-      <button className='button' onClick={addEducation}>
-        Add Education
-      </button>
-      <Heading as='h1' size='xl' mb={5}>
-        Experience
-      </Heading>
+      {isSubmitted ? null : (
+        <button className='button' onClick={addEducation}>
+          Add Education
+        </button>
+      )}
+
       <PracticalExp
         experience={experience}
         onChange={handleExperienceChange}
@@ -83,7 +85,7 @@ function CVForm() {
       <button
         className='button'
         onClick={isSubmitted ? handleEdit : handleSubmit}>
-        {isSubmitted ? 'Edit' : 'Submit'}
+        {isSubmitted ? 'Edit Form' : 'Submit Form'}
       </button>
     </Box>
   );
