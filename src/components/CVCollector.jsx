@@ -22,11 +22,11 @@ import { GrAddCircle } from 'react-icons/gr';
 function CVCollector() {
   const { addGeneralInfo, addEducation, addWorkExperience } =
     useContext(CVContext); // From CVProvider
-  const [educationForms, setEducationForms] = useState([{ id: uuidv4() }]);
+  const [educationForms, setEducationForms] = useState([]);
   const [workForms, setWorkForms] = useState([0]);
 
   const handleAddEducationForm = () => {
-    setEducationForms(prevForms => [...prevForms, { id: uuidv4() }]);
+    setEducationForms(prevForms => [...prevForms, prevForms.length]);
   };
 
   const handleAddWorkForm = () => {
@@ -47,8 +47,8 @@ function CVCollector() {
           <Text fontSize='2xl'>Education</Text>
         </Heading>
         {/* Education Forms */}
-        {educationForms.map((form, index) => (
-          <Accordion key={form.id} allowMultiple>
+        {educationForms.map((_, index) => (
+          <Accordion key={index} allowMultiple>
             <AccordionItem>
               <h2>
                 <AccordionButton>
@@ -61,7 +61,7 @@ function CVCollector() {
               <AccordionPanel pb={4}>
                 <EducationForm
                   key={index}
-                  id={form.id.toString()}
+                  // id={form.id}
                   addEducation={addEducation}
                 />
               </AccordionPanel>

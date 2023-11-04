@@ -1,13 +1,13 @@
-import { useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { CVContext } from './CVProvider';
 import { Box } from '@chakra-ui/react';
 
 function CVDisplay() {
   const { cvData } = useContext(CVContext);
 
-  // useEffect(() => {
-  //   console.log(cvData.generalInfo.id); // Log the ID of the generalInfo object
-  // }, [cvData]);
+  useEffect(() => {
+    console.log(cvData);
+  }, [cvData]);
 
   return (
     <Box className='display' boxShadow='lg' p='6' rounded='md' bg='white'>

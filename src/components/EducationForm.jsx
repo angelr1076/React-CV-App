@@ -165,7 +165,7 @@ function EducationForm({ id, addEducation }) {
 }
 
 EducationForm.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   addEducation: PropTypes.func.isRequired,
 };
 
