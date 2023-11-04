@@ -1,4 +1,13 @@
 import PropTypes from 'prop-types';
+import {
+  Box,
+  Text,
+  FormLabel,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+} from '@chakra-ui/react';
 
 function EducationalExp({ education, index, onChange, isSubmitted }) {
   const handleInputChange = e => {
@@ -12,41 +21,43 @@ function EducationalExp({ education, index, onChange, isSubmitted }) {
           {education.schoolName} {education.major} {education.dateOfStudy}
         </div>
       ) : (
-        <div>
-          <label className='label' htmlFor={`schoolName${index}`}>
-            School Name
-          </label>
-          <input
-            className='input'
-            name='schoolName'
-            value={education.schoolName}
-            onChange={handleInputChange}
-            placeholder='School Name'
-            id={`schoolName${index}`}
-          />
-          <label className='label' htmlFor={`major${index}`}>
-            Major
-          </label>
-          <input
-            className='input'
-            name='major'
-            value={education.major}
-            onChange={handleInputChange}
-            placeholder='Major'
-            id={`major${index}`}
-          />
-          <label className='label' htmlFor={`dateOfStudy${index}`}>
-            Date of Study
-          </label>
-          <input
-            className='input'
-            name='dateOfStudy'
-            value={education.dateOfStudy}
-            onChange={handleInputChange}
-            placeholder='Date of Study'
-            id={`dateOfStudy${index}`}
-          />
-        </div>
+        <Card>
+          <CardBody>
+            <FormLabel className='label' htmlFor={`schoolName${index}`}>
+              School Name
+            </FormLabel>
+            <input
+              className='input'
+              name='schoolName'
+              value={education.schoolName}
+              onChange={handleInputChange}
+              placeholder='School Name'
+              id={`schoolName${index}`}
+            />
+            <FormLabel className='label' htmlFor={`major${index}`}>
+              Major
+            </FormLabel>
+            <input
+              className='input'
+              name='major'
+              value={education.major}
+              onChange={handleInputChange}
+              placeholder='Major'
+              id={`major${index}`}
+            />
+            <FormLabel className='label' htmlFor={`dateOfStudy${index}`}>
+              Date of Study
+            </FormLabel>
+            <input
+              className='input'
+              name='dateOfStudy'
+              value={education.dateOfStudy}
+              onChange={handleInputChange}
+              placeholder='Date of Study'
+              id={`dateOfStudy${index}`}
+            />
+          </CardBody>
+        </Card>
       )}
     </div>
   );
