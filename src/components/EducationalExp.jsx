@@ -50,7 +50,6 @@ function EducationalExp({
                   <FormLabel className='label' htmlFor={`schoolName${index}`}>
                     School Name
                   </FormLabel>
-
                   <Input
                     className='input'
                     name='schoolName'

@@ -15,13 +15,16 @@ function CVForm() {
   const [education, setEducation] = useState([
     { id: uuidv4(), schoolName: '', major: '', dateOfStudy: '' },
   ]);
-  const [experience, setExperience] = useState({
-    companyName: '',
-    positionTitle: '',
-    responsibilities: '',
-    dateFrom: '',
-    dateUntil: '',
-  });
+  const [experience, setExperience] = useState([
+    {
+      id: uuidv4(),
+      companyName: '',
+      positionTitle: '',
+      responsibilities: '',
+      dateFrom: '',
+      dateUntil: '',
+    },
+  ]);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleGeneralInfoChange = updatedInfo => {
@@ -33,7 +36,6 @@ function CVForm() {
       ...education,
       { id: uuidv4(), schoolName: '', major: '', dateOfStudy: '' },
     ]);
-    console.log(education);
   };
 
   const handleEducationChange = (updatedEducation, index) => {
@@ -48,8 +50,30 @@ function CVForm() {
     setEducation(education.filter(education => education.id !== id));
   };
 
-  const handleExperienceChange = updatedExperience => {
-    setExperience(updatedExperience);
+  const handleAddExperience = () => {
+    setExperience([
+      ...experience,
+      {
+        id: uuidv4(),
+        companyName: '',
+        positionTitle: '',
+        responsibilities: '',
+        dateFrom: '',
+        dateUntil: '',
+      },
+    ]);
+  };
+
+  const handleExperienceChange = (updatedExperience, id) => {
+    setExperience(prevExperience =>
+      prevExperience.map(experience =>
+        experience.id === id ? updatedExperience : experience
+      )
+    );
+  };
+
+  const handleDeleteExperience = id => {
+    setExperience(experience.filter(experience => experience.id !== id));
   };
 
   const handleSubmit = () => {
@@ -83,12 +107,21 @@ function CVForm() {
           Add Education
         </button>
       )}
-
-      <PracticalExp
-        experience={experience}
-        onChange={handleExperienceChange}
-        isSubmitted={isSubmitted}
-      />
+      {experience.map((experience, index) => (
+        <PracticalExp
+          key={experience.id}
+          experience={experience}
+          index={index}
+          onChange={handleExperienceChange}
+          handleDeleteExperience={handleDeleteExperience}
+          isSubmitted={isSubmitted}
+        />
+      ))}
+      {isSubmitted ? null : (
+        <button className='button' onClick={handleAddExperience}>
+          Add Experience
+        </button>
+      )}
       <button
         className='button'
         onClick={isSubmitted ? handleEdit : handleSubmit}>
