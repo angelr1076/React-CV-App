@@ -4,7 +4,6 @@ import {
   Text,
   Input,
   Button,
-  FormLabel,
   Card,
   CardHeader,
   CardBody,
@@ -14,6 +13,10 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
 } from '@chakra-ui/react';
 
 function PracticalExp({
@@ -27,6 +30,9 @@ function PracticalExp({
     const { name, value } = e.target;
     onChange({ ...experience, [name]: value }, index);
   };
+
+  const isError =
+    experience.companyName === '' || experience.positionTitle === '';
 
   return (
     <div className='form-group'>
@@ -50,66 +56,90 @@ function PracticalExp({
             <AccordionPanel pb={4}>
               <Card>
                 <CardBody>
-                  <FormLabel className='label' htmlFor={`companyName${index}`}>
-                    Company Name
-                  </FormLabel>
-                  <Input
-                    className='input'
-                    name='companyName'
-                    value={experience.companyName}
-                    onChange={handleInputChange}
-                    placeholder='Company Name'
-                    id={`companyName${index}`}
-                  />
-                  <FormLabel
-                    className='label'
-                    htmlFor={`positionTitle${index}`}>
-                    Position Title
-                  </FormLabel>
-                  <Input
-                    className='input'
-                    name='positionTitle'
-                    value={experience.positionTitle}
-                    onChange={handleInputChange}
-                    placeholder='Position Title'
-                    id={`positionTitle${index}`}
-                  />
-                  <FormLabel
-                    className='label'
-                    htmlFor={`responsibilities${index}`}>
-                    Responsibilities
-                  </FormLabel>
-                  <Input
-                    className='input'
-                    name='responsibilities'
-                    value={experience.responsibilities}
-                    onChange={handleInputChange}
-                    placeholder='Responsibilities'
-                    id={`responsibilities${index}`}
-                  />
-                  <FormLabel className='label' htmlFor={`dateFrom${index}`}>
-                    Date From
-                  </FormLabel>
-                  <Input
-                    className='input'
-                    name='dateFrom'
-                    value={experience.dateFrom}
-                    onChange={handleInputChange}
-                    placeholder='Date From'
-                    id={`dateFrom${index}`}
-                  />
-                  <FormLabel className='label' htmlFor={`dateUntil${index}`}>
-                    Date Until
-                  </FormLabel>
-                  <Input
-                    className='input'
-                    name='dateUntil'
-                    value={experience.dateUntil}
-                    onChange={handleInputChange}
-                    placeholder='Date Until'
-                    id={`dateUntil${index}`}
-                    mb={5}
-                  />
+                  <FormControl isInvalid={isError}>
+                    <FormLabel
+                      className='label'
+                      htmlFor={`companyName${index}`}>
+                      Company Name
+                    </FormLabel>
+                    <Input
+                      className='input'
+                      name='companyName'
+                      value={experience.companyName}
+                      onChange={handleInputChange}
+                      placeholder='Company Name'
+                      id={`companyName${index}`}
+                    />
+                    {!isError ? (
+                      <FormHelperText>Enter your company name.</FormHelperText>
+                    ) : (
+                      <FormErrorMessage>
+                        Company name is required.
+                      </FormErrorMessage>
+                    )}
+                  </FormControl>
+                  <FormControl isInvalid={isError}>
+                    <FormLabel
+                      className='label'
+                      htmlFor={`positionTitle${index}`}>
+                      Position Title
+                    </FormLabel>
+                    <Input
+                      className='input'
+                      name='positionTitle'
+                      value={experience.positionTitle}
+                      onChange={handleInputChange}
+                      placeholder='Position Title'
+                      id={`positionTitle${index}`}
+                    />
+                    {!isError ? (
+                      <FormHelperText>Enter your position.</FormHelperText>
+                    ) : (
+                      <FormErrorMessage>Position is required.</FormErrorMessage>
+                    )}
+                  </FormControl>
+                  <FormControl>
+                    <FormLabel
+                      className='label'
+                      htmlFor={`responsibilities${index}`}>
+                      Responsibilities
+                    </FormLabel>
+                    <Input
+                      className='input'
+                      name='responsibilities'
+                      value={experience.responsibilities}
+                      onChange={handleInputChange}
+                      placeholder='Responsibilities'
+                      id={`responsibilities${index}`}
+                    />
+                  </FormControl>
+                  <FormControl>
+                    <FormLabel className='label' htmlFor={`dateFrom${index}`}>
+                      Date From
+                    </FormLabel>
+                    <Input
+                      className='input'
+                      name='dateFrom'
+                      value={experience.dateFrom}
+                      onChange={handleInputChange}
+                      placeholder='Date From'
+                      id={`dateFrom${index}`}
+                    />
+                  </FormControl>
+                  <FormControl>
+                    <FormLabel className='label' htmlFor={`dateUntil${index}`}>
+                      Date Until
+                    </FormLabel>
+                    <Input
+                      className='input'
+                      name='dateUntil'
+                      value={experience.dateUntil}
+                      onChange={handleInputChange}
+                      placeholder='Date Until'
+                      id={`dateUntil${index}`}
+                      mb={5}
+                    />
+                  </FormControl>
                   <Button
                     colorScheme='red'
                     size='sm'

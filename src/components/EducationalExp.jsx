@@ -4,7 +4,6 @@ import {
   Text,
   Input,
   Button,
-  FormLabel,
   Card,
   CardHeader,
   CardBody,
@@ -14,6 +13,10 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
 } from '@chakra-ui/react';
 
 function EducationalExp({
@@ -27,6 +30,9 @@ function EducationalExp({
     const { name, value } = e.target;
     onChange({ ...education, [name]: value }, index);
   };
+
+  const isError = education.schoolName === '' || education.major === '';
+
   return (
     <div className='form-group'>
       {isSubmitted ? (
@@ -47,40 +53,60 @@ function EducationalExp({
             <AccordionPanel pb={4}>
               <Card>
                 <CardBody>
-                  <FormLabel className='label' htmlFor={`schoolName${index}`}>
-                    School Name
-                  </FormLabel>
-                  <Input
-                    className='input'
-                    name='schoolName'
-                    value={education.schoolName}
-                    onChange={handleInputChange}
-                    placeholder='School Name'
-                    id={`schoolName${index}`}
-                  />
-                  <FormLabel className='label' htmlFor={`major${index}`}>
-                    Major
-                  </FormLabel>
-                  <Input
-                    className='input'
-                    name='major'
-                    value={education.major}
-                    onChange={handleInputChange}
-                    placeholder='Major'
-                    id={`major${index}`}
-                  />
-                  <FormLabel className='label' htmlFor={`dateOfStudy${index}`}>
-                    Date of Study
-                  </FormLabel>
-                  <Input
-                    className='input'
-                    name='dateOfStudy'
-                    value={education.dateOfStudy}
-                    onChange={handleInputChange}
-                    placeholder='Date of Study'
-                    id={`dateOfStudy${index}`}
-                    mb={5}
-                  />
+                  <FormControl isInvalid={isError}>
+                    <FormLabel className='label' htmlFor={`schoolName${index}`}>
+                      School Name
+                    </FormLabel>
+                    <Input
+                      className='input'
+                      name='schoolName'
+                      value={education.schoolName}
+                      onChange={handleInputChange}
+                      placeholder='School Name'
+                      id={`schoolName${index}`}
+                    />
+                    {!isError ? (
+                      <FormHelperText>Enter your school name.</FormHelperText>
+                    ) : (
+                      <FormErrorMessage>
+                        School name is required.
+                      </FormErrorMessage>
+                    )}
+                  </FormControl>
+                  <FormControl isInvalid={isError}>
+                    <FormLabel className='label' htmlFor={`major${index}`}>
+                      Major
+                    </FormLabel>
+                    <Input
+                      className='input'
+                      name='major'
+                      value={education.major}
+                      onChange={handleInputChange}
+                      placeholder='Major'
+                      id={`major${index}`}
+                    />
+                    {!isError ? (
+                      <FormHelperText>Enter your major.</FormHelperText>
+                    ) : (
+                      <FormErrorMessage>Major is required.</FormErrorMessage>
+                    )}
+                  </FormControl>
+                  <FormControl>
+                    <FormLabel
+                      className='label'
+                      htmlFor={`dateOfStudy${index}`}>
+                      Date of Study
+                    </FormLabel>
+                    <Input
+                      className='input'
+                      name='dateOfStudy'
+                      value={education.dateOfStudy}
+                      onChange={handleInputChange}
+                      placeholder='Date of Study'
+                      id={`dateOfStudy${index}`}
+                      mb={5}
+                    />
+                  </FormControl>
                   {/* TODO: Left align button */}
                   <Button
                     colorScheme='red'

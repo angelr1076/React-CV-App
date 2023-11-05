@@ -4,7 +4,6 @@ import {
   Box,
   Heading,
   Input,
-  FormLabel,
   Text,
   Card,
   CardHeader,
@@ -15,6 +14,10 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
 } from '@chakra-ui/react';
 
 function GeneralInfo({ info, onChange, isSubmitted }) {
@@ -22,6 +25,8 @@ function GeneralInfo({ info, onChange, isSubmitted }) {
     const { name, value } = e.target;
     onChange({ ...info, [name]: value });
   };
+
+  const isError = info.name === '';
 
   return (
     <>
@@ -44,36 +49,53 @@ function GeneralInfo({ info, onChange, isSubmitted }) {
             <AccordionPanel pb={4}>
               <Card mb={5}>
                 <CardBody>
-                  <FormLabel className='label' htmlFor='name'>
-                    Name
-                  </FormLabel>
-                  <Input
-                    className='input'
-                    name='name'
-                    value={info.name}
-                    onChange={handleInputChange}
-                    placeholder='Name'
-                  />
-                  <FormLabel className='label' htmlFor='email'>
-                    Email
-                  </FormLabel>
-                  <Input
-                    className='input'
-                    name='email'
-                    value={info.email}
-                    onChange={handleInputChange}
-                    placeholder='Email'
-                  />
-                  <FormLabel className='label' htmlFor='phone'>
-                    Phone
-                  </FormLabel>
-                  <Input
-                    className='input'
-                    name='phone'
-                    value={info.phone}
-                    onChange={handleInputChange}
-                    placeholder='Phone'
-                  />
+                  <FormControl isInvalid={isError}>
+                    <FormLabel className='label' htmlFor='name'>
+                      Name
+                    </FormLabel>
+                    <Input
+                      className='input'
+                      name='name'
+                      value={info.name}
+                      onChange={handleInputChange}
+                      placeholder='Name'
+                    />
+                    {!isError ? (
+                      <FormHelperText>Enter your full name.</FormHelperText>
+                    ) : (
+                      // FIXME: Error message not rendering
+                      <FormErrorMessage>
+                        Full name is required.
+                      </FormErrorMessage>
+                    )}
+                  </FormControl>
+                  <FormControl>
+                    <FormLabel className='label' htmlFor='email'>
+                      Email
+                    </FormLabel>
+                    <Input
+                      className='input'
+                      name='email'
+                      value={info.email}
+                      onChange={handleInputChange}
+                      placeholder='Email'
+                    />
+                    <FormHelperText>
+                      {`We'll never share your email.`}
+                    </FormHelperText>
+                  </FormControl>
+                  <FormControl>
+                    <FormLabel className='label' htmlFor='phone'>
+                      Phone
+                    </FormLabel>
+                    <Input
+                      className='input'
+                      name='phone'
+                      value={info.phone}
+                      onChange={handleInputChange}
+                      placeholder='858-555-1234'
+                    />
+                  </FormControl>
                 </CardBody>
               </Card>
             </AccordionPanel>
