@@ -3,6 +3,7 @@ import { useState } from 'react';
 import GeneralInfo from './GeneralInfo';
 import EducationalExp from './EducationalExp';
 import PracticalExp from './PracticalExp';
+import Title from './Title';
 import { v4 as uuidv4 } from 'uuid';
 import { Box, Button } from '@chakra-ui/react';
 
@@ -26,6 +27,7 @@ function CVForm() {
     },
   ]);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  // TODO: Collapse all accordions button
 
   const handleGeneralInfoChange = updatedInfo => {
     setGeneralInfo(updatedInfo);
@@ -34,7 +36,7 @@ function CVForm() {
   const handleAddEducation = () => {
     setEducation([
       ...education,
-      { id: uuidv4(), schoolName: '', major: '', dateOfStudy: '' },
+      { id: uuidv4(), schoolName: '', major: '', dateFrom: '', dateTo: '' },
     ]);
   };
 
@@ -59,7 +61,7 @@ function CVForm() {
         positionTitle: '',
         responsibilities: '',
         dateFrom: '',
-        dateUntil: '',
+        dateTo: '',
       },
     ]);
   };
@@ -85,66 +87,69 @@ function CVForm() {
   };
 
   return (
-    <Box className='form-group'>
-      <GeneralInfo
-        info={generalInfo}
-        onChange={handleGeneralInfoChange}
-        isSubmitted={isSubmitted}
-      />
+    <>
+      {isSubmitted ? null : <Title title='React-CV-Canvas' />}
+      <Box className='form-group'>
+        <GeneralInfo
+          info={generalInfo}
+          onChange={handleGeneralInfoChange}
+          isSubmitted={isSubmitted}
+        />
 
-      {education.map((education, index) => (
-        <EducationalExp
-          key={education.id}
-          education={education}
-          index={index}
-          onChange={handleEducationChange}
-          handleDeleteEducation={handleDeleteEducation}
-          isSubmitted={isSubmitted}
-        />
-      ))}
-      {isSubmitted ? null : (
-        <Box className='btn-container' mt={5} mb={5}>
+        {education.map((education, index) => (
+          <EducationalExp
+            key={education.id}
+            education={education}
+            index={index}
+            onChange={handleEducationChange}
+            handleDeleteEducation={handleDeleteEducation}
+            isSubmitted={isSubmitted}
+          />
+        ))}
+        {isSubmitted ? null : (
+          <Box className='btn-container' mt={5} mb={5}>
+            <Button
+              colorScheme='twitter'
+              size='sm'
+              variant='outline'
+              onClick={handleAddEducation}>
+              Add Education
+            </Button>
+          </Box>
+        )}
+        {experience.map((experience, index) => (
+          <PracticalExp
+            key={experience.id}
+            experience={experience}
+            index={index}
+            onChange={handleExperienceChange}
+            handleDeleteExperience={handleDeleteExperience}
+            isSubmitted={isSubmitted}
+          />
+        ))}
+        {isSubmitted ? null : (
+          <Box className='btn-container' mt={5} mb={5}>
+            <Button
+              colorScheme='linkedin'
+              size='sm'
+              variant='outline'
+              onClick={handleAddExperience}>
+              Add Experience
+            </Button>
+          </Box>
+        )}
+        <hr />
+        <Box className='btn-container' mt={5}>
           <Button
-            colorScheme='twitter'
-            size='sm'
-            variant='outline'
-            onClick={handleAddEducation}>
-            Add Education
+            colorScheme={isSubmitted ? 'teal' : 'messenger'}
+            size='md'
+            mt={6}
+            onClick={isSubmitted ? handleEdit : handleSubmit}>
+            {isSubmitted ? 'Edit CV' : 'Create CV'}
           </Button>
         </Box>
-      )}
-      {experience.map((experience, index) => (
-        <PracticalExp
-          key={experience.id}
-          experience={experience}
-          index={index}
-          onChange={handleExperienceChange}
-          handleDeleteExperience={handleDeleteExperience}
-          isSubmitted={isSubmitted}
-        />
-      ))}
-      {isSubmitted ? null : (
-        <Box className='btn-container' mt={5} mb={5}>
-          <Button
-            colorScheme='linkedin'
-            size='sm'
-            variant='outline'
-            onClick={handleAddExperience}>
-            Add Experience
-          </Button>
-        </Box>
-      )}
-      <hr />
-      <Box className='btn-container' mt={5}>
-        <Button
-          colorScheme={isSubmitted ? 'teal' : 'messenger'}
-          size='md'
-          mt={6}
-          onClick={isSubmitted ? handleEdit : handleSubmit}>
-          {isSubmitted ? 'Edit Form' : 'Submit Form'}
-        </Button>
       </Box>
-    </Box>
+    </>
   );
 }
 

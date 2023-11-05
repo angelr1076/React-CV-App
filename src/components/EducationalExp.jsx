@@ -37,7 +37,8 @@ function EducationalExp({
     <div className='form-group'>
       {isSubmitted ? (
         <div>
-          {education.schoolName} {education.major} {education.dateOfStudy}
+          {education.schoolName} {education.major} {education.dateFrom}{' '}
+          {education.dateTo}
         </div>
       ) : (
         <Accordion key={index} defaultIndex={[0]} allowMultiple>
@@ -92,18 +93,32 @@ function EducationalExp({
                     )}
                   </FormControl>
                   <FormControl>
-                    <FormLabel
-                      className='label'
-                      htmlFor={`dateOfStudy${index}`}>
-                      Date of Study
+                    <FormLabel className='label' htmlFor={`dateFrom${index}`}>
+                      From Date
                     </FormLabel>
                     <Input
                       className='input'
-                      name='dateOfStudy'
-                      value={education.dateOfStudy}
+                      name='dateFrom'
+                      type='date'
+                      value={education.dateFrom}
                       onChange={handleInputChange}
-                      placeholder='Date of Study'
-                      id={`dateOfStudy${index}`}
+                      placeholder='From Date'
+                      id={`dateFrom${index}`}
+                      mb={5}
+                    />
+                  </FormControl>
+                  <FormControl>
+                    <FormLabel className='label' htmlFor={`dateTo${index}`}>
+                      To Date
+                    </FormLabel>
+                    <Input
+                      className='input'
+                      name='dateTo'
+                      type='date'
+                      value={education.dateTo}
+                      onChange={handleInputChange}
+                      placeholder='To Date'
+                      id={`dateTo${index}`}
                       mb={5}
                     />
                   </FormControl>
@@ -129,7 +144,8 @@ EducationalExp.propTypes = {
     id: PropTypes.string.isRequired,
     schoolName: PropTypes.string.isRequired,
     major: PropTypes.string.isRequired,
-    dateOfStudy: PropTypes.string.isRequired,
+    dateFrom: PropTypes.string.isRequired,
+    dateTo: PropTypes.string.isRequired,
   }),
   index: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,

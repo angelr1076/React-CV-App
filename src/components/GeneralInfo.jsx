@@ -63,7 +63,6 @@ function GeneralInfo({ info, onChange, isSubmitted }) {
                     {!isError ? (
                       <FormHelperText>Enter your full name.</FormHelperText>
                     ) : (
-                      // FIXME: Error message not rendering
                       <FormErrorMessage>
                         Full name is required.
                       </FormErrorMessage>

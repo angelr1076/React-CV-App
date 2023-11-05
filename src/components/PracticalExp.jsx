@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import {
   Box,
   Text,
+  Textarea,
   Input,
   Button,
   Card,
@@ -40,7 +41,7 @@ function PracticalExp({
         <div>
           {experience.companyName} {experience.positionTitle}{' '}
           {experience.responsibilities} {experience.dateFrom}{' '}
-          {experience.dateUntil}
+          {experience.dateTo}
         </div>
       ) : (
         <Accordion key={index} defaultIndex={[0]} allowMultiple>
@@ -104,9 +105,10 @@ function PracticalExp({
                       htmlFor={`responsibilities${index}`}>
                       Responsibilities
                     </FormLabel>
-                    <Input
+                    <Textarea
                       className='input'
                       name='responsibilities'
+                      type='textarea'
                       value={experience.responsibilities}
                       onChange={handleInputChange}
                       placeholder='Responsibilities'
@@ -115,28 +117,31 @@ function PracticalExp({
                   </FormControl>
                   <FormControl>
                     <FormLabel className='label' htmlFor={`dateFrom${index}`}>
-                      Date From
+                      From Date
                     </FormLabel>
                     <Input
                       className='input'
                       name='dateFrom'
+                      type='date'
                       value={experience.dateFrom}
                       onChange={handleInputChange}
-                      placeholder='Date From'
+                      placeholder='From Date'
                       id={`dateFrom${index}`}
+                      mb={5}
                     />
                   </FormControl>
                   <FormControl>
-                    <FormLabel className='label' htmlFor={`dateUntil${index}`}>
-                      Date Until
+                    <FormLabel className='label' htmlFor={`dateTo${index}`}>
+                      To Date
                     </FormLabel>
                     <Input
                       className='input'
-                      name='dateUntil'
-                      value={experience.dateUntil}
+                      name='dateTo'
+                      type='date'
+                      value={experience.dateTo}
                       onChange={handleInputChange}
-                      placeholder='Date Until'
-                      id={`dateUntil${index}`}
+                      placeholder='To Date'
+                      id={`dateTo${index}`}
                       mb={5}
                     />
                   </FormControl>
@@ -163,7 +168,7 @@ PracticalExp.propTypes = {
     positionTitle: PropTypes.string.isRequired,
     responsibilities: PropTypes.string.isRequired,
     dateFrom: PropTypes.string.isRequired,
-    dateUntil: PropTypes.string.isRequired,
+    dateTo: PropTypes.string.isRequired,
   }),
   onChange: PropTypes.func.isRequired,
   handleDeleteExperience: PropTypes.func.isRequired,
