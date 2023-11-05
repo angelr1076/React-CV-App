@@ -3,7 +3,8 @@ import { useState } from 'react';
 import GeneralInfo from './GeneralInfo';
 import EducationalExp from './EducationalExp';
 import PracticalExp from './PracticalExp';
-import { Box, Heading } from '@chakra-ui/react';
+import { v4 as uuidv4 } from 'uuid';
+import { Box } from '@chakra-ui/react';
 
 function CVForm() {
   const [generalInfo, setGeneralInfo] = useState({
@@ -12,7 +13,7 @@ function CVForm() {
     phone: '',
   });
   const [education, setEducation] = useState([
-    { schoolName: '', major: '', dateOfStudy: '' },
+    { id: uuidv4(), schoolName: '', major: '', dateOfStudy: '' },
   ]);
   const [experience, setExperience] = useState({
     companyName: '',
@@ -27,11 +28,12 @@ function CVForm() {
     setGeneralInfo(updatedInfo);
   };
 
-  const addEducation = () => {
+  const handleAddEducation = () => {
     setEducation([
       ...education,
-      { schoolName: '', major: '', dateOfStudy: '' },
+      { id: uuidv4(), schoolName: '', major: '', dateOfStudy: '' },
     ]);
+    console.log(education);
   };
 
   const handleEducationChange = (updatedEducation, index) => {
@@ -40,6 +42,10 @@ function CVForm() {
         idx === index ? updatedEducation : education
       )
     );
+  };
+
+  const handleDeleteEducation = id => {
+    setEducation(education.filter(education => education.id !== id));
   };
 
   const handleExperienceChange = updatedExperience => {
@@ -64,15 +70,16 @@ function CVForm() {
 
       {education.map((education, index) => (
         <EducationalExp
-          key={index}
+          key={education.id}
           education={education}
           index={index}
           onChange={handleEducationChange}
+          handleDeleteEducation={handleDeleteEducation}
           isSubmitted={isSubmitted}
         />
       ))}
       {isSubmitted ? null : (
-        <button className='button' onClick={addEducation}>
+        <button className='button' onClick={handleAddEducation}>
           Add Education
         </button>
       )}

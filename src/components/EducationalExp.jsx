@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import {
   Box,
   Text,
+  Input,
+  Button,
   FormLabel,
   Card,
   CardHeader,
@@ -14,7 +16,13 @@ import {
   AccordionIcon,
 } from '@chakra-ui/react';
 
-function EducationalExp({ education, index, onChange, isSubmitted }) {
+function EducationalExp({
+  education,
+  index,
+  onChange,
+  handleDeleteEducation,
+  isSubmitted,
+}) {
   const handleInputChange = e => {
     const { name, value } = e.target;
     onChange({ ...education, [name]: value }, index);
@@ -31,7 +39,7 @@ function EducationalExp({ education, index, onChange, isSubmitted }) {
             <h2>
               <AccordionButton>
                 <Box as='span' flex='1' textAlign='left' fontSize='2xl'>
-                  Education {index + 1}
+                  Education
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
@@ -42,7 +50,8 @@ function EducationalExp({ education, index, onChange, isSubmitted }) {
                   <FormLabel className='label' htmlFor={`schoolName${index}`}>
                     School Name
                   </FormLabel>
-                  <input
+
+                  <Input
                     className='input'
                     name='schoolName'
                     value={education.schoolName}
@@ -53,7 +62,7 @@ function EducationalExp({ education, index, onChange, isSubmitted }) {
                   <FormLabel className='label' htmlFor={`major${index}`}>
                     Major
                   </FormLabel>
-                  <input
+                  <Input
                     className='input'
                     name='major'
                     value={education.major}
@@ -64,14 +73,22 @@ function EducationalExp({ education, index, onChange, isSubmitted }) {
                   <FormLabel className='label' htmlFor={`dateOfStudy${index}`}>
                     Date of Study
                   </FormLabel>
-                  <input
+                  <Input
                     className='input'
                     name='dateOfStudy'
                     value={education.dateOfStudy}
                     onChange={handleInputChange}
                     placeholder='Date of Study'
                     id={`dateOfStudy${index}`}
+                    mb={5}
                   />
+                  {/* TODO: Left align button */}
+                  <Button
+                    colorScheme='red'
+                    size='sm'
+                    onClick={() => handleDeleteEducation(education.id)}>
+                    Delete
+                  </Button>
                 </CardBody>
               </Card>
             </AccordionPanel>
@@ -84,12 +101,14 @@ function EducationalExp({ education, index, onChange, isSubmitted }) {
 
 EducationalExp.propTypes = {
   education: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     schoolName: PropTypes.string.isRequired,
     major: PropTypes.string.isRequired,
     dateOfStudy: PropTypes.string.isRequired,
   }),
   index: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
+  handleDeleteEducation: PropTypes.func.isRequired,
   isSubmitted: PropTypes.bool.isRequired,
 };
 export default EducationalExp;
