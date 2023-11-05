@@ -1,11 +1,12 @@
 import './assets/styles/style.css';
 import CVForm from './components/CVForm';
+import { Box } from '@chakra-ui/react';
 
 function App() {
   return (
-    <div className='main'>
+    <Box className='main' border='1px' borderColor='gray.200'>
       <CVForm />
-    </div>
+    </Box>
   );
 }
 
