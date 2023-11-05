@@ -25,7 +25,7 @@ function PracticalExp({
 }) {
   const handleInputChange = e => {
     const { name, value } = e.target;
-    onChange({ ...experience, [name]: value });
+    onChange({ ...experience, [name]: value }, index);
   };
 
   return (
@@ -42,7 +42,7 @@ function PracticalExp({
             <h2>
               <AccordionButton>
                 <Box as='span' flex='1' textAlign='left' fontSize='2xl'>
-                  Experience
+                  Experience ({index + 1})
                 </Box>
                 <AccordionIcon />
               </AccordionButton>

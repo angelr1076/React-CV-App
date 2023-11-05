@@ -39,7 +39,7 @@ function EducationalExp({
             <h2>
               <AccordionButton>
                 <Box as='span' flex='1' textAlign='left' fontSize='2xl'>
-                  Education
+                  Education ({index + 1})
                 </Box>
                 <AccordionIcon />
               </AccordionButton>

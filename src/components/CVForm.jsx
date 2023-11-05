@@ -4,7 +4,7 @@ import GeneralInfo from './GeneralInfo';
 import EducationalExp from './EducationalExp';
 import PracticalExp from './PracticalExp';
 import { v4 as uuidv4 } from 'uuid';
-import { Box } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 
 function CVForm() {
   const [generalInfo, setGeneralInfo] = useState({
@@ -64,10 +64,10 @@ function CVForm() {
     ]);
   };
 
-  const handleExperienceChange = (updatedExperience, id) => {
-    setExperience(prevExperience =>
-      prevExperience.map(experience =>
-        experience.id === id ? updatedExperience : experience
+  const handleExperienceChange = (updatedExperience, index) => {
+    setExperience(prevEducation =>
+      prevEducation.map((experience, idx) =>
+        idx === index ? updatedExperience : experience
       )
     );
   };
@@ -103,9 +103,15 @@ function CVForm() {
         />
       ))}
       {isSubmitted ? null : (
-        <button className='button' onClick={handleAddEducation}>
-          Add Education
-        </button>
+        <Box className='btn-container' mt={5} mb={5}>
+          <Button
+            colorScheme='twitter'
+            size='sm'
+            variant='outline'
+            onClick={handleAddEducation}>
+            Add Education
+          </Button>
+        </Box>
       )}
       {experience.map((experience, index) => (
         <PracticalExp
@@ -118,15 +124,26 @@ function CVForm() {
         />
       ))}
       {isSubmitted ? null : (
-        <button className='button' onClick={handleAddExperience}>
-          Add Experience
-        </button>
+        <Box className='btn-container' mt={5} mb={5}>
+          <Button
+            colorScheme='linkedin'
+            size='sm'
+            variant='outline'
+            onClick={handleAddExperience}>
+            Add Experience
+          </Button>
+        </Box>
       )}
-      <button
-        className='button'
-        onClick={isSubmitted ? handleEdit : handleSubmit}>
-        {isSubmitted ? 'Edit Form' : 'Submit Form'}
-      </button>
+      <hr />
+      <Box className='btn-container' mt={5}>
+        <Button
+          colorScheme={isSubmitted ? 'teal' : 'messenger'}
+          size='md'
+          mt={6}
+          onClick={isSubmitted ? handleEdit : handleSubmit}>
+          {isSubmitted ? 'Edit Form' : 'Submit Form'}
+        </Button>
+      </Box>
     </Box>
   );
 }
