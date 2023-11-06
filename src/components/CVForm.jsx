@@ -5,7 +5,7 @@ import EducationalExp from './EducationalExp';
 import PracticalExp from './PracticalExp';
 import Title from './Title';
 import { v4 as uuidv4 } from 'uuid';
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, Text } from '@chakra-ui/react';
 
 function CVForm() {
   const [generalInfo, setGeneralInfo] = useState({
@@ -87,7 +87,7 @@ function CVForm() {
   };
 
   return (
-    <>
+    <Box>
       {isSubmitted ? null : <Title title='React-CV-Canvas' />}
       <Box className='form-group'>
         <GeneralInfo
@@ -95,7 +95,8 @@ function CVForm() {
           onChange={handleGeneralInfoChange}
           isSubmitted={isSubmitted}
         />
-
+        <Text fontSize='2xl'>Education</Text>
+        <hr />
         {education.map((education, index) => (
           <EducationalExp
             key={education.id}
@@ -117,6 +118,8 @@ function CVForm() {
             </Button>
           </Box>
         )}
+        <Text fontSize='2xl'>Experience</Text>
+        <hr />
         {experience.map((experience, index) => (
           <PracticalExp
             key={experience.id}
@@ -138,7 +141,6 @@ function CVForm() {
             </Button>
           </Box>
         )}
-        <hr />
         <Box className='btn-container' mt={5}>
           <Button
             colorScheme={isSubmitted ? 'teal' : 'messenger'}
@@ -149,7 +151,7 @@ function CVForm() {
           </Button>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }
 

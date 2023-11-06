@@ -2,6 +2,9 @@
 import PropTypes from 'prop-types';
 import {
   Box,
+  Flex,
+  Center,
+  Spacer,
   Heading,
   Input,
   Text,
@@ -32,9 +35,22 @@ function GeneralInfo({ info, onChange, isSubmitted }) {
     <>
       {' '}
       {isSubmitted ? (
-        <div>
-          {info.name} {info.email} {info.phone}
-        </div>
+        <Box>
+          <Flex justify='center'>
+            <Center>
+              <Heading fontSize='2xl'>{info.name}</Heading>
+            </Center>
+          </Flex>
+          <Flex fontSize='sm'>
+            <Box>
+              <Text p={2}>{info.email}</Text>
+            </Box>
+            <Spacer />
+            <Box>
+              <Text p={2}>{info.phone}</Text>
+            </Box>
+          </Flex>
+        </Box>
       ) : (
         <Accordion defaultIndex={[0]} allowMultiple>
           <AccordionItem>

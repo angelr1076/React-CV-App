@@ -2,6 +2,10 @@ import PropTypes from 'prop-types';
 import {
   Box,
   Text,
+  Flex,
+  Center,
+  Spacer,
+  Heading,
   Input,
   Button,
   Card,
@@ -36,10 +40,10 @@ function EducationalExp({
   return (
     <div className='form-group'>
       {isSubmitted ? (
-        <div>
+        <Box>
           {education.schoolName} {education.major} {education.dateFrom}{' '}
           {education.dateTo}
-        </div>
+        </Box>
       ) : (
         <Accordion key={index} defaultIndex={[0]} allowMultiple>
           <AccordionItem>
