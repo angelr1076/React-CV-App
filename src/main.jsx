@@ -8,7 +8,7 @@ import { Box } from '@chakra-ui/react';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ChakraProvider>
-      <Box className='box-body' p={5} borderRadius='5' bg='lightgray'>
+      <Box p={5} borderRadius='5'>
         <App />
       </Box>
     </ChakraProvider>
