@@ -95,7 +95,6 @@ function CVForm() {
           onChange={handleGeneralInfoChange}
           isSubmitted={isSubmitted}
         />
-        <Text fontSize='2xl'>Education</Text>
         <hr />
         {education.map((education, index) => (
           <EducationalExp
@@ -118,7 +117,6 @@ function CVForm() {
             </Button>
           </Box>
         )}
-        <Text fontSize='2xl'>Experience</Text>
         <hr />
         {experience.map((experience, index) => (
           <PracticalExp
