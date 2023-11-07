@@ -1,91 +1,28 @@
 // src/components/CVForm.js
-import { useState } from 'react';
-import GeneralInfo from './GeneralInfo';
-import EducationalExp from './EducationalExp';
-import PracticalExp from './PracticalExp';
+import { useContext } from 'react';
+import { CVContext } from '../contexts/CVContext';
+import { GeneralInfo } from './GeneralInfo';
+import { EducationalExp } from './EducationalExp';
+import { PracticalExp } from './PracticalExp';
 import Title from './Title';
-import { v4 as uuidv4 } from 'uuid';
-import { Box, Button, Text } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 
 function CVForm() {
-  const [generalInfo, setGeneralInfo] = useState({
-    name: '',
-    email: '',
-    phone: '',
-  });
-  const [education, setEducation] = useState([
-    { id: uuidv4(), schoolName: '', major: '', dateOfStudy: '' },
-  ]);
-  const [experience, setExperience] = useState([
-    {
-      id: uuidv4(),
-      companyName: '',
-      positionTitle: '',
-      responsibilities: '',
-      dateFrom: '',
-      dateUntil: '',
-    },
-  ]);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  // TODO: Collapse all accordions button
-
-  const handleGeneralInfoChange = updatedInfo => {
-    setGeneralInfo(updatedInfo);
-  };
-
-  const handleAddEducation = () => {
-    setEducation([
-      ...education,
-      { id: uuidv4(), schoolName: '', major: '', dateFrom: '', dateTo: '' },
-    ]);
-  };
-
-  const handleEducationChange = (updatedEducation, index) => {
-    setEducation(prevEducation =>
-      prevEducation.map((education, idx) =>
-        idx === index ? updatedEducation : education
-      )
-    );
-  };
-
-  const handleDeleteEducation = id => {
-    setEducation(education.filter(education => education.id !== id));
-  };
-
-  const handleAddExperience = () => {
-    setExperience([
-      ...experience,
-      {
-        id: uuidv4(),
-        companyName: '',
-        positionTitle: '',
-        responsibilities: '',
-        dateFrom: '',
-        dateTo: '',
-      },
-    ]);
-  };
-
-  const handleExperienceChange = (updatedExperience, index) => {
-    setExperience(prevEducation =>
-      prevEducation.map((experience, idx) =>
-        idx === index ? updatedExperience : experience
-      )
-    );
-  };
-
-  const handleDeleteExperience = id => {
-    setExperience(experience.filter(experience => experience.id !== id));
-  };
-
-  const handleSubmit = () => {
-    setIsSubmitted(true);
-  };
-
-  const handleEdit = () => {
-    setIsSubmitted(false);
-  };
-
+  const {
+    generalInfo,
+    education,
+    experience,
+    isSubmitted,
+    handleGeneralInfoChange,
+    handleAddEducation,
+    handleEducationChange,
+    handleDeleteEducation,
+    handleAddExperience,
+    handleExperienceChange,
+    handleDeleteExperience,
+    handleSubmit,
+    handleEdit,
+  } = useContext(CVContext);
   return (
     <Box>
       {isSubmitted ? null : <Title title='React-CV-Canvas' />}
@@ -153,4 +90,4 @@ function CVForm() {
   );
 }
 
-export default CVForm;
+export { CVForm };

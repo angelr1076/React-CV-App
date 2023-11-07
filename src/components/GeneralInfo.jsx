@@ -2,16 +2,9 @@
 import PropTypes from 'prop-types';
 import {
   Box,
-  Flex,
-  Center,
-  Spacer,
-  Heading,
   Input,
-  Text,
   Card,
-  CardHeader,
   CardBody,
-  CardFooter,
   Accordion,
   AccordionItem,
   AccordionButton,
@@ -23,7 +16,7 @@ import {
   FormHelperText,
 } from '@chakra-ui/react';
 
-function GeneralInfo({ info, onChange, isSubmitted }) {
+function GeneralInfo({ info, onChange }) {
   const handleInputChange = e => {
     const { name, value } = e.target;
     onChange({ ...info, [name]: value });
@@ -33,90 +26,68 @@ function GeneralInfo({ info, onChange, isSubmitted }) {
 
   return (
     <>
-      {' '}
-      {isSubmitted ? (
-        <Box>
-          <Flex justify='center'>
-            <Center>
-              <Heading fontSize='2xl'>{info.name}</Heading>
-            </Center>
-          </Flex>
-          <Flex fontSize='sm'>
-            <Box>
-              <Text p={2}>{info.email}</Text>
-            </Box>
-            <Spacer />
-            <Box>
-              <Text p={2}>{info.phone}</Text>
-            </Box>
-          </Flex>
-        </Box>
-      ) : (
-        <Accordion defaultIndex={[0]} allowMultiple>
-          <AccordionItem>
-            <h1>
-              <AccordionButton>
-                <Box as='span' flex='1' textAlign='left' fontSize='2xl'>
-                  Personal Information
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h1>
-            <AccordionPanel pb={4}>
-              <Card mb={5}>
-                <CardBody>
-                  <FormControl isInvalid={isError}>
-                    <FormLabel className='label' htmlFor='name'>
-                      Name
-                    </FormLabel>
-                    <Input
-                      className='input'
-                      name='name'
-                      value={info.name}
-                      onChange={handleInputChange}
-                      placeholder='Name'
-                    />
-                    {!isError ? (
-                      <FormHelperText>Enter your full name.</FormHelperText>
-                    ) : (
-                      <FormErrorMessage>
-                        Full name is required.
-                      </FormErrorMessage>
-                    )}
-                  </FormControl>
-                  <FormControl>
-                    <FormLabel className='label' htmlFor='email'>
-                      Email
-                    </FormLabel>
-                    <Input
-                      className='input'
-                      name='email'
-                      value={info.email}
-                      onChange={handleInputChange}
-                      placeholder='Email'
-                    />
-                    <FormHelperText>
-                      {`We'll never share your email.`}
-                    </FormHelperText>
-                  </FormControl>
-                  <FormControl>
-                    <FormLabel className='label' htmlFor='phone'>
-                      Phone
-                    </FormLabel>
-                    <Input
-                      className='input'
-                      name='phone'
-                      value={info.phone}
-                      onChange={handleInputChange}
-                      placeholder='858-555-1234'
-                    />
-                  </FormControl>
-                </CardBody>
-              </Card>
-            </AccordionPanel>
-          </AccordionItem>
-        </Accordion>
-      )}
+      <Accordion defaultIndex={[0]} allowMultiple>
+        <AccordionItem>
+          <h1>
+            <AccordionButton>
+              <Box as='span' flex='1' textAlign='left' fontSize='2xl'>
+                Personal Information
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h1>
+          <AccordionPanel pb={4}>
+            <Card mb={5}>
+              <CardBody>
+                <FormControl isInvalid={isError}>
+                  <FormLabel className='label' htmlFor='name'>
+                    Name
+                  </FormLabel>
+                  <Input
+                    className='input'
+                    name='name'
+                    value={info.name}
+                    onChange={handleInputChange}
+                    placeholder='Name'
+                  />
+                  {!isError ? (
+                    <FormHelperText>Enter your full name.</FormHelperText>
+                  ) : (
+                    <FormErrorMessage>Full name is required.</FormErrorMessage>
+                  )}
+                </FormControl>
+                <FormControl>
+                  <FormLabel className='label' htmlFor='email'>
+                    Email
+                  </FormLabel>
+                  <Input
+                    className='input'
+                    name='email'
+                    value={info.email}
+                    onChange={handleInputChange}
+                    placeholder='Email'
+                  />
+                  <FormHelperText>
+                    {`We'll never share your email.`}
+                  </FormHelperText>
+                </FormControl>
+                <FormControl>
+                  <FormLabel className='label' htmlFor='phone'>
+                    Phone
+                  </FormLabel>
+                  <Input
+                    className='input'
+                    name='phone'
+                    value={info.phone}
+                    onChange={handleInputChange}
+                    placeholder='858-555-1234'
+                  />
+                </FormControl>
+              </CardBody>
+            </Card>
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
     </>
   );
 }
@@ -131,4 +102,4 @@ GeneralInfo.propTypes = {
   isSubmitted: PropTypes.bool.isRequired,
 };
 
-export default GeneralInfo;
+export { GeneralInfo };

@@ -38,6 +38,11 @@ body {
   margin-bottom: 16px;
 }
 
+.form-container {
+  overflow-y: auto;
+  height: 100vh;
+}
+
 .label {
   display: block;
   margin-bottom: 4px;
@@ -50,20 +55,6 @@ body {
   border-radius: 4px;
   border: 1px solid #ccc;
 }
-
-/* .button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  background-color: #008cba;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.button + .button {
-  margin-left: 10px;
-} */
 
 @media (prefers-color-scheme: light) {
   :root {
