@@ -1,4 +1,3 @@
-// src/components/CVDisplay.jsx
 import { useContext } from 'react';
 import { CVContext } from '../contexts/CVContext';
 import { Box } from '@chakra-ui/react';

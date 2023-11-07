@@ -1,4 +1,3 @@
-// src/components/GeneralInfo.js
 import PropTypes from 'prop-types';
 import {
   Box,

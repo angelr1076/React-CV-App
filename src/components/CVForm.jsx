@@ -1,4 +1,3 @@
-// src/components/CVForm.js
 import { useContext } from 'react';
 import { CVContext } from '../contexts/CVContext';
 import { GeneralInfo } from './GeneralInfo';
