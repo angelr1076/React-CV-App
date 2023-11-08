@@ -3,7 +3,6 @@ import { CVContext } from '../contexts/CVContext';
 import { GeneralInfo } from './GeneralInfo';
 import { EducationalExp } from './EducationalExp';
 import { PracticalExp } from './PracticalExp';
-import Title from './Title';
 import { Box, Button } from '@chakra-ui/react';
 
 function CVForm() {
@@ -24,7 +23,6 @@ function CVForm() {
   } = useContext(CVContext);
   return (
     <Box>
-      {isSubmitted ? null : <Title title='React-CV-Canvas' />}
       <Box className='form-group'>
         <GeneralInfo
           info={generalInfo}

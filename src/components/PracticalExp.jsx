@@ -32,99 +32,98 @@ function PracticalExp({ experience, index, onChange, handleDeleteExperience }) {
         <AccordionItem>
           <h2>
             <AccordionButton>
-              <Box as='span' flex='1' textAlign='left' fontSize='2xl'>
+              <Box as='span' flex='1' textAlign='left' fontSize='lg'>
                 Experience ({index + 1})
               </Box>
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={4}>
+          <AccordionPanel pb={4} fontSize='sm'>
             <Card>
               <CardBody>
                 <FormControl isInvalid={isError}>
-                  <FormLabel className='label' htmlFor={`companyName${index}`}>
+                  <FormLabel htmlFor={`companyName${index}`} fontSize='sm'>
                     Company Name
                   </FormLabel>
                   <Input
-                    className='input'
                     name='companyName'
                     value={experience.companyName}
                     onChange={handleInputChange}
                     placeholder='Company Name'
                     id={`companyName${index}`}
+                    fontSize='sm'
                   />
                   {!isError ? (
-                    <FormHelperText>Enter your company name.</FormHelperText>
+                    <FormHelperText fontSize='sm'>
+                      Enter your company name.
+                    </FormHelperText>
                   ) : (
-                    <FormErrorMessage>
+                    <FormErrorMessage fontSize='sm'>
                       Company name is required.
                     </FormErrorMessage>
                   )}
                 </FormControl>
                 <FormControl isInvalid={isError}>
-                  <FormLabel
-                    className='label'
-                    htmlFor={`positionTitle${index}`}>
+                  <FormLabel htmlFor={`positionTitle${index}`} fontSize='sm'>
                     Position Title
                   </FormLabel>
                   <Input
-                    className='input'
                     name='positionTitle'
                     value={experience.positionTitle}
                     onChange={handleInputChange}
                     placeholder='Position Title'
                     id={`positionTitle${index}`}
+                    fontSize='sm'
                   />
                   {!isError ? (
-                    <FormHelperText>Enter your position.</FormHelperText>
+                    <FormHelperText fontSize='sm'>
+                      Enter your position.
+                    </FormHelperText>
                   ) : (
-                    <FormErrorMessage>Position is required.</FormErrorMessage>
+                    <FormErrorMessage fontSize='sm'>
+                      Position is required.
+                    </FormErrorMessage>
                   )}
                 </FormControl>
                 <FormControl>
-                  <FormLabel
-                    className='label'
-                    htmlFor={`responsibilities${index}`}>
+                  <FormLabel htmlFor={`responsibilities${index}`} fontSize='sm'>
                     Responsibilities
                   </FormLabel>
                   <Textarea
-                    className='input'
                     name='responsibilities'
-                    type='textarea'
                     value={experience.responsibilities}
                     onChange={handleInputChange}
                     placeholder='Responsibilities'
                     id={`responsibilities${index}`}
+                    fontSize='sm'
                   />
                 </FormControl>
                 <FormControl>
-                  <FormLabel className='label' htmlFor={`dateFrom${index}`}>
+                  <FormLabel htmlFor={`dateFrom${index}`} fontSize='sm'>
                     From Date
                   </FormLabel>
                   <Input
-                    className='input'
                     name='dateFrom'
                     type='date'
                     value={experience.dateFrom}
                     onChange={handleInputChange}
-                    placeholder='From Date'
                     id={`dateFrom${index}`}
                     mb={5}
+                    fontSize='sm'
                   />
                 </FormControl>
                 <FormControl>
-                  <FormLabel className='label' htmlFor={`dateTo${index}`}>
+                  <FormLabel htmlFor={`dateTo${index}`} fontSize='sm'>
                     To Date
                   </FormLabel>
                   <Input
-                    className='input'
                     name='dateTo'
                     type='date'
                     value={experience.dateTo}
                     onChange={handleInputChange}
-                    placeholder='To Date'
                     id={`dateTo${index}`}
                     mb={5}
+                    fontSize='sm'
                   />
                 </FormControl>
                 <Button

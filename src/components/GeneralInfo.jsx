@@ -29,57 +29,61 @@ function GeneralInfo({ info, onChange }) {
         <AccordionItem>
           <h1>
             <AccordionButton>
-              <Box as='span' flex='1' textAlign='left' fontSize='2xl'>
+              <Box as='span' flex='1' textAlign='left' fontSize='lg'>
                 Personal Information
               </Box>
               <AccordionIcon />
             </AccordionButton>
           </h1>
-          <AccordionPanel pb={4}>
+          <AccordionPanel pb={4} fontSize='sm'>
             <Card mb={5}>
               <CardBody>
                 <FormControl isInvalid={isError}>
-                  <FormLabel className='label' htmlFor='name'>
+                  <FormLabel htmlFor='name' fontSize='sm'>
                     Name
                   </FormLabel>
                   <Input
-                    className='input'
                     name='name'
                     value={info.name}
                     onChange={handleInputChange}
                     placeholder='Name'
+                    fontSize='sm'
                   />
                   {!isError ? (
-                    <FormHelperText>Enter your full name.</FormHelperText>
+                    <FormHelperText fontSize='sm'>
+                      Enter your full name.
+                    </FormHelperText>
                   ) : (
-                    <FormErrorMessage>Full name is required.</FormErrorMessage>
+                    <FormErrorMessage fontSize='sm'>
+                      Full name is required.
+                    </FormErrorMessage>
                   )}
                 </FormControl>
                 <FormControl>
-                  <FormLabel className='label' htmlFor='email'>
+                  <FormLabel htmlFor='email' fontSize='sm'>
                     Email
                   </FormLabel>
                   <Input
-                    className='input'
                     name='email'
                     value={info.email}
                     onChange={handleInputChange}
                     placeholder='Email'
+                    fontSize='sm'
                   />
-                  <FormHelperText>
+                  <FormHelperText fontSize='sm'>
                     {`We'll never share your email.`}
                   </FormHelperText>
                 </FormControl>
                 <FormControl>
-                  <FormLabel className='label' htmlFor='phone'>
+                  <FormLabel htmlFor='phone' fontSize='sm'>
                     Phone
                   </FormLabel>
                   <Input
-                    className='input'
                     name='phone'
                     value={info.phone}
                     onChange={handleInputChange}
                     placeholder='858-555-1234'
+                    fontSize='sm'
                   />
                 </FormControl>
               </CardBody>

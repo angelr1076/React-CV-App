@@ -30,84 +30,87 @@ function EducationalExp({ education, index, onChange, handleDeleteEducation }) {
         <AccordionItem>
           <h2>
             <AccordionButton>
-              <Box as='span' flex='1' textAlign='left' fontSize='2xl'>
+              <Box as='span' flex='1' textAlign='left' fontSize='lg'>
                 Education ({index + 1})
               </Box>
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={4}>
+          <AccordionPanel pb={4} fontSize='sm'>
             <Card>
               <CardBody>
                 <FormControl isInvalid={isError}>
-                  <FormLabel className='label' htmlFor={`schoolName${index}`}>
+                  <FormLabel htmlFor={`schoolName${index}`} fontSize='sm'>
                     School Name
                   </FormLabel>
                   <Input
-                    className='input'
                     name='schoolName'
                     value={education.schoolName}
                     onChange={handleInputChange}
                     placeholder='School Name'
                     id={`schoolName${index}`}
+                    fontSize='sm'
                   />
                   {!isError ? (
-                    <FormHelperText>Enter your school name.</FormHelperText>
+                    <FormHelperText fontSize='sm'>
+                      Enter your school name.
+                    </FormHelperText>
                   ) : (
-                    <FormErrorMessage>
+                    <FormErrorMessage fontSize='sm'>
                       School name is required.
                     </FormErrorMessage>
                   )}
                 </FormControl>
                 <FormControl isInvalid={isError}>
-                  <FormLabel className='label' htmlFor={`major${index}`}>
+                  <FormLabel htmlFor={`major${index}`} fontSize='sm'>
                     Major
                   </FormLabel>
                   <Input
-                    className='input'
                     name='major'
                     value={education.major}
                     onChange={handleInputChange}
                     placeholder='Major'
                     id={`major${index}`}
+                    fontSize='sm'
                   />
                   {!isError ? (
-                    <FormHelperText>Enter your major.</FormHelperText>
+                    <FormHelperText fontSize='sm'>
+                      Enter your major.
+                    </FormHelperText>
                   ) : (
-                    <FormErrorMessage>Major is required.</FormErrorMessage>
+                    <FormErrorMessage fontSize='sm'>
+                      Major is required.
+                    </FormErrorMessage>
                   )}
                 </FormControl>
                 <FormControl>
-                  <FormLabel className='label' htmlFor={`dateFrom${index}`}>
+                  <FormLabel htmlFor={`dateFrom${index}`} fontSize='sm'>
                     From Date
                   </FormLabel>
                   <Input
-                    className='input'
                     name='dateFrom'
                     type='date'
                     value={education.dateFrom}
                     onChange={handleInputChange}
-                    placeholder='From Date'
                     id={`dateFrom${index}`}
                     mb={5}
+                    fontSize='sm'
                   />
                 </FormControl>
                 <FormControl>
-                  <FormLabel className='label' htmlFor={`dateTo${index}`}>
+                  <FormLabel htmlFor={`dateTo${index}`} fontSize='sm'>
                     To Date
                   </FormLabel>
                   <Input
-                    className='input'
                     name='dateTo'
                     type='date'
                     value={education.dateTo}
                     onChange={handleInputChange}
-                    placeholder='To Date'
                     id={`dateTo${index}`}
                     mb={5}
+                    fontSize='sm'
                   />
                 </FormControl>
-                {/* TODO: Left align button */}
                 <Button
                   colorScheme='red'
                   size='sm'
