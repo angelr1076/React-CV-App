@@ -15,9 +15,17 @@ import {
   FormLabel,
   FormErrorMessage,
   FormHelperText,
+  Icon,
 } from '@chakra-ui/react';
+import { MdWorkOutline } from 'react-icons/md';
 
-function PracticalExp({ experience, index, onChange, handleDeleteExperience }) {
+function PracticalExp({
+  experience,
+  index,
+  onChange,
+  handleDeleteExperience,
+  isSubmitted,
+}) {
   const handleInputChange = e => {
     const { name, value } = e.target;
     onChange({ ...experience, [name]: value }, index);
@@ -33,6 +41,7 @@ function PracticalExp({ experience, index, onChange, handleDeleteExperience }) {
           <h2>
             <AccordionButton>
               <Box as='span' flex='1' textAlign='left' fontSize='lg'>
+                <Icon as={MdWorkOutline} boxSize={6} color='blue.500' />{' '}
                 Experience ({index + 1})
               </Box>
               <AccordionIcon />
@@ -52,6 +61,8 @@ function PracticalExp({ experience, index, onChange, handleDeleteExperience }) {
                     placeholder='Company Name'
                     id={`companyName${index}`}
                     fontSize='sm'
+                    errorBorderColor='red.200'
+                    disabled={isSubmitted}
                   />
                   {!isError ? (
                     <FormHelperText fontSize='sm'>
@@ -74,6 +85,8 @@ function PracticalExp({ experience, index, onChange, handleDeleteExperience }) {
                     placeholder='Position Title'
                     id={`positionTitle${index}`}
                     fontSize='sm'
+                    errorBorderColor='red.200'
+                    disabled={isSubmitted}
                   />
                   {!isError ? (
                     <FormHelperText fontSize='sm'>
@@ -96,6 +109,7 @@ function PracticalExp({ experience, index, onChange, handleDeleteExperience }) {
                     placeholder='Responsibilities'
                     id={`responsibilities${index}`}
                     fontSize='sm'
+                    disabled={isSubmitted}
                   />
                 </FormControl>
                 <FormControl>
@@ -110,6 +124,7 @@ function PracticalExp({ experience, index, onChange, handleDeleteExperience }) {
                     id={`dateFrom${index}`}
                     mb={5}
                     fontSize='sm'
+                    disabled={isSubmitted}
                   />
                 </FormControl>
                 <FormControl>
@@ -124,14 +139,17 @@ function PracticalExp({ experience, index, onChange, handleDeleteExperience }) {
                     id={`dateTo${index}`}
                     mb={5}
                     fontSize='sm'
+                    disabled={isSubmitted}
                   />
                 </FormControl>
-                <Button
-                  colorScheme='red'
-                  size='sm'
-                  onClick={() => handleDeleteExperience(experience.id)}>
-                  Delete
-                </Button>
+                {isSubmitted ? null : (
+                  <Button
+                    colorScheme='red'
+                    size='sm'
+                    onClick={() => handleDeleteExperience(experience.id)}>
+                    Delete
+                  </Button>
+                )}
               </CardBody>
             </Card>
           </AccordionPanel>

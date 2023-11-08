@@ -13,9 +13,11 @@ import {
   FormLabel,
   FormErrorMessage,
   FormHelperText,
+  Icon,
 } from '@chakra-ui/react';
+import { IoInformationCircleOutline } from 'react-icons/io5';
 
-function GeneralInfo({ info, onChange }) {
+function GeneralInfo({ info, onChange, isSubmitted }) {
   const handleInputChange = e => {
     const { name, value } = e.target;
     onChange({ ...info, [name]: value });
@@ -30,6 +32,11 @@ function GeneralInfo({ info, onChange }) {
           <h1>
             <AccordionButton>
               <Box as='span' flex='1' textAlign='left' fontSize='lg'>
+                <Icon
+                  as={IoInformationCircleOutline}
+                  boxSize={6}
+                  color='blue.500'
+                />{' '}
                 Personal Information
               </Box>
               <AccordionIcon />
@@ -48,6 +55,8 @@ function GeneralInfo({ info, onChange }) {
                     onChange={handleInputChange}
                     placeholder='Name'
                     fontSize='sm'
+                    errorBorderColor='red.200'
+                    disabled={isSubmitted}
                   />
                   {!isError ? (
                     <FormHelperText fontSize='sm'>
@@ -69,6 +78,7 @@ function GeneralInfo({ info, onChange }) {
                     onChange={handleInputChange}
                     placeholder='Email'
                     fontSize='sm'
+                    disabled={isSubmitted}
                   />
                   <FormHelperText fontSize='sm'>
                     {`We'll never share your email.`}
@@ -84,6 +94,7 @@ function GeneralInfo({ info, onChange }) {
                     onChange={handleInputChange}
                     placeholder='858-555-1234'
                     fontSize='sm'
+                    disabled={isSubmitted}
                   />
                 </FormControl>
               </CardBody>

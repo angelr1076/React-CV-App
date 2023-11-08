@@ -14,9 +14,17 @@ import {
   FormLabel,
   FormErrorMessage,
   FormHelperText,
+  Icon,
 } from '@chakra-ui/react';
+import { IoSchoolOutline } from 'react-icons/io5';
 
-function EducationalExp({ education, index, onChange, handleDeleteEducation }) {
+function EducationalExp({
+  education,
+  index,
+  onChange,
+  handleDeleteEducation,
+  isSubmitted,
+}) {
   const handleInputChange = e => {
     const { name, value } = e.target;
     onChange({ ...education, [name]: value }, index);
@@ -31,6 +39,7 @@ function EducationalExp({ education, index, onChange, handleDeleteEducation }) {
           <h2>
             <AccordionButton>
               <Box as='span' flex='1' textAlign='left' fontSize='lg'>
+                <Icon as={IoSchoolOutline} boxSize={6} color='blue.500' />{' '}
                 Education ({index + 1})
               </Box>
               <AccordionIcon />
@@ -50,6 +59,8 @@ function EducationalExp({ education, index, onChange, handleDeleteEducation }) {
                     placeholder='School Name'
                     id={`schoolName${index}`}
                     fontSize='sm'
+                    errorBorderColor='red.200'
+                    disabled={isSubmitted}
                   />
                   {!isError ? (
                     <FormHelperText fontSize='sm'>
@@ -72,6 +83,8 @@ function EducationalExp({ education, index, onChange, handleDeleteEducation }) {
                     placeholder='Major'
                     id={`major${index}`}
                     fontSize='sm'
+                    errorBorderColor='red.200'
+                    disabled={isSubmitted}
                   />
                   {!isError ? (
                     <FormHelperText fontSize='sm'>
@@ -95,6 +108,7 @@ function EducationalExp({ education, index, onChange, handleDeleteEducation }) {
                     id={`dateFrom${index}`}
                     mb={5}
                     fontSize='sm'
+                    disabled={isSubmitted}
                   />
                 </FormControl>
                 <FormControl>
@@ -109,14 +123,18 @@ function EducationalExp({ education, index, onChange, handleDeleteEducation }) {
                     id={`dateTo${index}`}
                     mb={5}
                     fontSize='sm'
+                    disabled={isSubmitted}
                   />
                 </FormControl>
-                <Button
-                  colorScheme='red'
-                  size='sm'
-                  onClick={() => handleDeleteEducation(education.id)}>
-                  Delete
-                </Button>
+                {isSubmitted ? null : (
+                  <Button
+                    colorScheme='red'
+                    size='sm'
+                    disabled={isSubmitted}
+                    onClick={() => handleDeleteEducation(education.id)}>
+                    Delete
+                  </Button>
+                )}
               </CardBody>
             </Card>
           </AccordionPanel>

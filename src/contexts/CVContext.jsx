@@ -25,7 +25,6 @@ const CVProvider = ({ children }) => {
   ]);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  // TODO: Collapse all accordions button
 
   const handleGeneralInfoChange = updatedInfo => {
     setGeneralInfo(updatedInfo);
