@@ -101,7 +101,7 @@ const CVDisplay = () => {
             bg='gray.300'
             color='black'
             fontSize='xl'
-            mb={4}>
+            mb={1}>
             Experience
           </Text>
         )}
