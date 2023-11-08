@@ -47,7 +47,7 @@ const CVDisplay = () => {
 
       {/* Education Section */}
       <Box className='education-section' p={4} borderRadius='md' mb={6}>
-        {education && education.length > 0 && education[0].schoolName && (
+        {education && education.length > 0 && education[0]?.schoolName && (
           <Text
             className='section-title'
             bg='gray.300'
@@ -95,7 +95,7 @@ const CVDisplay = () => {
         borderRadius='md'
         mb={6}
         align='stretch'>
-        {experience && experience.length > 0 && (
+        {experience && experience.length > 0 && experience[0]?.companyName && (
           <Text
             className='section-title'
             bg='gray.300'
