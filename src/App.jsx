@@ -11,7 +11,7 @@ function App() {
         <Box flex='1' className='form-container'>
           <CVForm />
         </Box>
-        <Box flex='1' className='display-container'>
+        <Box flex='3' className='display-container'>
           <CVDisplay />
         </Box>
       </Box>
