@@ -58,7 +58,7 @@ function PracticalExp({
                     name='companyName'
                     value={experience.companyName}
                     onChange={handleInputChange}
-                    placeholder='Company Name'
+                    placeholder='Myrtle&#39;s Plants'
                     id={`companyName${index}`}
                     fontSize='sm'
                     errorBorderColor='red.200'
@@ -82,7 +82,7 @@ function PracticalExp({
                     name='positionTitle'
                     value={experience.positionTitle}
                     onChange={handleInputChange}
-                    placeholder='Position Title'
+                    placeholder='Chief Botanist'
                     id={`positionTitle${index}`}
                     fontSize='sm'
                     errorBorderColor='red.200'
@@ -106,7 +106,7 @@ function PracticalExp({
                     name='responsibilities'
                     value={experience.responsibilities}
                     onChange={handleInputChange}
-                    placeholder='Responsibilities'
+                    placeholder='Wielding precision tools to choreograph the daily ballet of botanical life...'
                     id={`responsibilities${index}`}
                     fontSize='sm'
                     disabled={isSubmitted}

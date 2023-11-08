@@ -2,7 +2,6 @@ import './assets/styles/style.css';
 import { CVProvider } from './contexts/CVContext';
 import { CVForm } from './components/CVForm';
 import { CVDisplay } from './components/CVDisplay';
-import { Title } from './components/Title';
 import { Box } from '@chakra-ui/react';
 
 function App() {

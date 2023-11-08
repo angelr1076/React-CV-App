@@ -53,7 +53,7 @@ function GeneralInfo({ info, onChange, isSubmitted }) {
                     name='name'
                     value={info.name}
                     onChange={handleInputChange}
-                    placeholder='Name'
+                    placeholder='Carmen Sandiego'
                     fontSize='sm'
                     errorBorderColor='red.200'
                     disabled={isSubmitted}
@@ -76,7 +76,7 @@ function GeneralInfo({ info, onChange, isSubmitted }) {
                     name='email'
                     value={info.email}
                     onChange={handleInputChange}
-                    placeholder='Email'
+                    placeholder='cs@beachlife.email'
                     fontSize='sm'
                     disabled={isSubmitted}
                   />
@@ -97,6 +97,19 @@ function GeneralInfo({ info, onChange, isSubmitted }) {
                     disabled={isSubmitted}
                   />
                 </FormControl>
+                <FormControl>
+                  <FormLabel htmlFor='location' fontSize='sm'>
+                    Location
+                  </FormLabel>
+                  <Input
+                    name='location'
+                    value={info.location}
+                    onChange={handleInputChange}
+                    placeholder='San Diego, CA'
+                    fontSize='sm'
+                    disabled={isSubmitted}
+                  />
+                </FormControl>
               </CardBody>
             </Card>
           </AccordionPanel>
@@ -111,6 +124,7 @@ GeneralInfo.propTypes = {
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
   }),
   onChange: PropTypes.func.isRequired,
   isSubmitted: PropTypes.bool.isRequired,

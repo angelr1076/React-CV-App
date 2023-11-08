@@ -56,6 +56,11 @@ body {
   border: 1px solid #ccc;
 }
 
+.css-768vic {
+  /* Override chakraui padding for page */
+  padding: 0 !important;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

@@ -9,6 +9,7 @@ const CVProvider = ({ children }) => {
     name: '',
     email: '',
     phone: '',
+    location: '',
   });
   const [education, setEducation] = useState([
     { id: uuidv4(), schoolName: '', major: '', dateFrom: '', dateTo: '' },

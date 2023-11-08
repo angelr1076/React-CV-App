@@ -56,7 +56,7 @@ function EducationalExp({
                     name='schoolName'
                     value={education.schoolName}
                     onChange={handleInputChange}
-                    placeholder='School Name'
+                    placeholder='University of Birmingham'
                     id={`schoolName${index}`}
                     fontSize='sm'
                     errorBorderColor='red.200'
@@ -80,7 +80,7 @@ function EducationalExp({
                     name='major'
                     value={education.major}
                     onChange={handleInputChange}
-                    placeholder='Major'
+                    placeholder='Botany'
                     id={`major${index}`}
                     fontSize='sm'
                     errorBorderColor='red.200'
