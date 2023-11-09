@@ -2,7 +2,7 @@
 
 Welcome to the CV Builder App. Built using the latest version of React. This app aims to provide users with an intuitive interface to design their perfect CV.
 
-[Screenshot of builder]('./src/assets/images/cvShot.png')
+![Screenshot of builder]('./src/assets/images/cvShot.png', 'Screenshot of the project')
 
 ## Getting Started:
 
