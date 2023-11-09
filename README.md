@@ -1,6 +1,8 @@
 # CV Builder App in React
 
-Welcome to the CV Builder App. Dive into the world of creating professional and clean CVs with ease. Built using the latest version of React, this app aims to provide users with an intuitive interface to design their perfect CV.
+Welcome to the CV Builder App. Built using the latest version of React. This app aims to provide users with an intuitive interface to design their perfect CV.
+
+[Screenshot of builder]('./src/assets/images/cvShot.png')
 
 ## Getting Started:
 
