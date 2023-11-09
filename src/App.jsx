@@ -2,11 +2,28 @@ import './assets/styles/style.css';
 import { CVProvider } from './contexts/CVContext';
 import { CVForm } from './components/CVForm';
 import { CVDisplay } from './components/CVDisplay';
-import { Box } from '@chakra-ui/react';
+import { Heading, Box, Flex, Icon } from '@chakra-ui/react';
+import { AiOutlineFileWord } from 'react-icons/ai';
 
 function App() {
   return (
     <CVProvider>
+      <Box>
+        <Heading
+          className='header'
+          as='h1'
+          size='lg'
+          textAlign='center'
+          mt={4}
+          mb={4}
+          color='blue.500'
+          backdropBlur={4}>
+          <Flex align='center' justifyContent='center'>
+            <Icon as={AiOutlineFileWord} boxSize={9} mr={2} />
+            <Box>React CV Canvas</Box>
+          </Flex>
+        </Heading>
+      </Box>
       <Box
         className='main'
         border='1px'

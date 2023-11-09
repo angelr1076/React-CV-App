@@ -17,6 +17,7 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import { IoSchoolOutline } from 'react-icons/io5';
+import { AiFillDelete } from 'react-icons/ai';
 
 function EducationalExp({
   education,
@@ -39,7 +40,12 @@ function EducationalExp({
           <h2>
             <AccordionButton>
               <Box as='span' flex='1' textAlign='left' fontSize='lg'>
-                <Icon as={IoSchoolOutline} boxSize={6} color='blue.500' />{' '}
+                <Icon
+                  as={IoSchoolOutline}
+                  boxSize={6}
+                  color='blue.500'
+                  mr={1}
+                />
                 Education ({index + 1})
               </Box>
               <AccordionIcon />
@@ -132,6 +138,7 @@ function EducationalExp({
                     size='sm'
                     disabled={isSubmitted}
                     onClick={() => handleDeleteEducation(education.id)}>
+                    <Icon as={AiFillDelete} boxSize={5} mr={1} />
                     Delete
                   </Button>
                 )}

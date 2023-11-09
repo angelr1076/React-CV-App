@@ -18,6 +18,7 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import { MdWorkOutline } from 'react-icons/md';
+import { AiFillDelete } from 'react-icons/ai';
 
 function PracticalExp({
   experience,
@@ -41,7 +42,7 @@ function PracticalExp({
           <h2>
             <AccordionButton>
               <Box as='span' flex='1' textAlign='left' fontSize='lg'>
-                <Icon as={MdWorkOutline} boxSize={6} color='blue.500' />{' '}
+                <Icon as={MdWorkOutline} boxSize={6} color='blue.500' mr={1} />
                 Experience ({index + 1})
               </Box>
               <AccordionIcon />
@@ -147,6 +148,7 @@ function PracticalExp({
                     colorScheme='red'
                     size='sm'
                     onClick={() => handleDeleteExperience(experience.id)}>
+                    <Icon as={AiFillDelete} boxSize={5} mr={1} />
                     Delete
                   </Button>
                 )}

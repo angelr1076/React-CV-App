@@ -3,12 +3,16 @@ import { CVContext } from '../contexts/CVContext';
 import { GeneralInfo } from './GeneralInfo';
 import { EducationalExp } from './EducationalExp';
 import { PracticalExp } from './PracticalExp';
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, HStack, Icon } from '@chakra-ui/react';
+import { AiOutlineCloudDownload, AiOutlineClear } from 'react-icons/ai';
+import { IoAddCircleOutline } from 'react-icons/io5';
 
 function CVForm() {
   const {
     generalInfo,
     education,
+    loadDefaultState,
+    handleClear,
     experience,
     isSubmitted,
     handleGeneralInfoChange,
@@ -23,6 +27,19 @@ function CVForm() {
   } = useContext(CVContext);
   return (
     <Box>
+      <Box className='btn-container' mt={5} mb={5}>
+        {isSubmitted ? null : (
+          <HStack justify='space-evenly' mb={4}>
+            <Button colorScheme='teal' size='sm' onClick={loadDefaultState}>
+              <Icon as={AiOutlineCloudDownload} boxSize={6} mr={1} /> Load
+              Default
+            </Button>
+            <Button colorScheme='red' size='sm' onClick={handleClear}>
+              <Icon as={AiOutlineClear} boxSize={6} mr={1} /> Clear Form
+            </Button>
+          </HStack>
+        )}
+      </Box>
       <Box className='form-group'>
         <GeneralInfo
           info={generalInfo}
@@ -47,6 +64,7 @@ function CVForm() {
               size='sm'
               variant='outline'
               onClick={handleAddEducation}>
+              <Icon as={IoAddCircleOutline} boxSize={6} mr={1} />
               Add Education
             </Button>
           </Box>
@@ -69,18 +87,21 @@ function CVForm() {
               size='sm'
               variant='outline'
               onClick={handleAddExperience}>
+              <Icon as={IoAddCircleOutline} boxSize={6} mr={1} />
               Add Experience
             </Button>
           </Box>
         )}
         <Box className='btn-container' mt={5}>
-          <Button
-            colorScheme={isSubmitted ? 'teal' : 'messenger'}
-            size='md'
-            mt={6}
-            onClick={isSubmitted ? handleEdit : handleSubmit}>
-            {isSubmitted ? 'Edit CV' : 'Create CV'}
-          </Button>
+          <Box className='button-container'>
+            <Button
+              colorScheme={isSubmitted ? 'yellow' : 'messenger'}
+              size='md'
+              mt={6}
+              onClick={isSubmitted ? handleEdit : handleSubmit}>
+              {isSubmitted ? 'Edit CV' : 'Create CV'}
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Box>

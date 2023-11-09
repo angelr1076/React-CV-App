@@ -31,6 +31,57 @@ const CVProvider = ({ children }) => {
     setGeneralInfo(updatedInfo);
   };
 
+  const loadDefaultState = () => {
+    setGeneralInfo({
+      name: 'Carmen Sandiego',
+      email: 'cs@beachlife.email',
+      phone: '858 555 1234',
+      location: 'San Diego, CA',
+    });
+    setEducation([
+      {
+        id: uuidv4(),
+        schoolName: 'University of Birmingham',
+        major: 'Botany',
+        dateFrom: '2011-09-01',
+        dateTo: '2015-06-30',
+      },
+    ]);
+    setExperience([
+      {
+        id: uuidv4(),
+        companyName: `Myrtle's Plants`,
+        positionTitle: 'Chief Botanist',
+        responsibilities:
+          'Botanical Specialist with over 6 years experience inspecting and classifying plant specimens. Skills include operating microscopes, identifying rare blooms, measuring soil pH, and meticulously recording data. Known for staying upbeat and humming showtunes while performing routine pruning and maintenance. Seeking new role leveraging botanical expertise and positive attitude.',
+        dateFrom: '2015-07-01',
+        dateTo: '2023-06-30',
+      },
+    ]);
+  };
+
+  const handleClear = () => {
+    setGeneralInfo({
+      name: '',
+      email: '',
+      phone: '',
+      location: '',
+    });
+    setEducation([
+      { id: uuidv4(), schoolName: '', major: '', dateFrom: '', dateTo: '' },
+    ]);
+    setExperience([
+      {
+        id: uuidv4(),
+        companyName: '',
+        positionTitle: '',
+        responsibilities: '',
+        dateFrom: '',
+        dateTo: '',
+      },
+    ]);
+  };
+
   const handleAddEducation = () => {
     setEducation([
       ...education,
@@ -87,6 +138,8 @@ const CVProvider = ({ children }) => {
   const value = {
     generalInfo,
     setGeneralInfo,
+    loadDefaultState,
+    handleClear,
     education,
     setEducation,
     experience,
