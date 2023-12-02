@@ -1,4 +1,4 @@
-# CV Builder App in React
+# CV Builder App in React [![Netlify Status](https://api.netlify.com/api/v1/badges/790e4d04-842d-4b44-8195-21836032ffb9/deploy-status)](https://app.netlify.com/sites/react-cv-canvas/deploys)
 
 Welcome to the CV Builder App. Built using the latest version of React. This app aims to provide users with an intuitive interface to design their perfect CV.
 
